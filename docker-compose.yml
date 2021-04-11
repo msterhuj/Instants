@@ -1,0 +1,35 @@
+version: '3.2'
+
+networks:
+  proxy:
+    external: true
+    driver: overlay
+    attachable: true
+
+services:
+  imfamous:
+    image: 7.4.16-apache-buster
+    networks:
+      - proxy
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=proxy
+
+        # services
+        - traefik.http.services.imfamous-service.loadbalancer.server.port=80
+
+        # router http
+        - traefik.http.routers.imfamous-http.rule=Host(`imfamous.netbytes.space`)
+        - traefik.http.routers.imfamous-http.entryPoints=web
+        - traefik.http.routers.imfamous-http.service=imfamous-service
+        - traefik.http.routers.imfamous-http.middlewares=https-redirect
+
+        # router https
+        - traefik.http.routers.imfamous-https.rule=Host(`imfamous.netbytes.space`)
+        - traefik.http.routers.imfamous-https.entryPoints=websecure
+        - traefik.http.routers.imfamous-https.service=imfamous-service
+        - traefik.http.routers.imfamous-https.tls=true
+        - traefik.http.routers.imfamous-https.tls.options=myTLSOptions@file
+        - traefik.http.routers.imfamous-https.tls.certresolver=netbytes
+    restart: always
