@@ -7,6 +7,8 @@ if (isset($_COOKIE["debug"]) && $_COOKIE["debug"] == "chocolatine") {
     setcookie("debug", "chocolatine", time()+3600);
 }
 
+include_once 'config.php';
+
 spl_autoload_register(function($className) {
     $path = "../src/";
     $ext = ".php";
