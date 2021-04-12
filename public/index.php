@@ -11,23 +11,25 @@ $app = new App();
 
 $app->getRouter()
     // public zone
-    ->get('/', [HomeController::class, 'home']) // home page
-    ->get('signup', [])
-    ->get('login', [])
-    ->get('/post/:::', []) // show post
-    ->get('/profile/:::', []) // show profile of user
+    ->get('/', 'home', HomeController::class) // home page
+    ->get('/signup', 'home', HomeController::class) // signup form
+    ->post('/signup', 'home', HomeController::class) // sign up action
+    ->get('/login', 'home', HomeController::class) // login form
+    ->post('/login', 'home', HomeController::class) // login action
+    ->get('/post/:::', 'home', HomeController::class) // show post
+    ->get('/profile/:::', 'home', HomeController::class) // show profile of user
     // user zone
-    ->get('/logout', []) // logout user
-    ->get('/bookmarks/', []) // all post saved
-    ->get('/report/', []) // report a post
-    ->get('/support/', []) // support tech
-    ->get('/messages/', []) // all private message
-    ->get('/messages/:::', []) // private with user
-    ->get('/settings/', []) // settings of user
+    ->get('/logout', 'home', HomeController::class) // logout user
+    ->get('/bookmarks/', 'home', HomeController::class) // all post saved
+    ->get('/report/', 'home', HomeController::class) // report a post
+    ->get('/support/', 'home', HomeController::class) // support tech
+    ->get('/messages/', 'home', HomeController::class) // all private message
+    ->get('/messages/:::', 'home', HomeController::class) // private with user
+    ->get('/settings/', 'home', HomeController::class) // settings of user
     // admin zone
-    ->get('/admin/', []) // General admin info
-    ->get('/admin/report', []) // manage report
-    ->get('/admin/support', []) // manage support ask
-    ->get('/admin/users', []) // manage user
+    ->get('/admin/', 'home', HomeController::class) // General admin info
+    ->get('/admin/report', 'home', HomeController::class) // manage report
+    ->get('/admin/support', 'home', HomeController::class) // manage support ask
+    ->get('/admin/users', 'home', HomeController::class) // manage user
 ;
 $app->exec();
