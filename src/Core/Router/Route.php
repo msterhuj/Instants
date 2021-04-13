@@ -9,6 +9,7 @@ class Route {
     private string $method;
     private string $url;
     private string $name;
+    private string $param;
     private mixed $callback;
 
     /**
@@ -23,15 +24,11 @@ class Route {
         $this->method = $method;
         $this->url = $url;
         $this->name = $name;
+        $this->param = "";
         $this->callback = $callback;
     }
 
     // Route Logic
-
-    public function match(): bool {
-
-    }
-
     public function render() {
         // todo make render
     }
@@ -53,11 +50,37 @@ class Route {
     }
 
     /**
+     * @param string $url
+     * @return Route
+     */
+    public function setUrl(string $url): Route
+    {
+        $this->url = $url;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getParam(): string
+    {
+        return $this->param;
+    }
+
+    /**
+     * @param string $param
+     */
+    public function setParam(string $param): void
+    {
+        $this->param = $param;
     }
 
     /**
