@@ -4,13 +4,12 @@ namespace Core;
 
 use Core\Router\Router;
 use Core\Router\RouterException;
-use JetBrains\PhpStorm\Pure;
 
 class App {
 
     private Router $router;
 
-    #[Pure] public function __construct() {
+    public function __construct() {
         $this->router = new Router();
     }
 
@@ -26,8 +25,7 @@ class App {
             $func = $route->getName();
             $controller = new $callback;
 
-            if (empty($route->getParam())) $controller->$func();
-            else $controller->$func($route->getParam());
+            return $controller->$func($route);
         } catch (RouterException $e) {
             echo '404';
             // catch 404 route here

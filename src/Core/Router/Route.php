@@ -2,8 +2,6 @@
 
 namespace Core\Router;
 
-use JetBrains\PhpStorm\Pure;
-
 class Route {
 
     private string $method;
@@ -19,7 +17,7 @@ class Route {
      * @param string $name
      * @param mixed $callback
      */
-    #[Pure] public function __construct(string $method, string $url, string $name, mixed $callback)
+    public function __construct(string $method, string $url, string $name, mixed $callback)
     {
         $this->method = $method;
         $this->url = $url;

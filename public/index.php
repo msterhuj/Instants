@@ -5,8 +5,6 @@ require '../includes/autoload.php';
 use Core\App;
 use App\Controller\HomeController;
 
-//print "The request path is : " . $_SERVER['PATH_INFO'];
-
 $app = new App();
 
 $app->getRouter()
@@ -32,4 +30,4 @@ $app->getRouter()
     ->get('/admin/support', 'home', HomeController::class) // manage support ask
     ->get('/admin/users', 'home', HomeController::class) // manage user
 ;
-$app->exec();
+echo $app->exec();

@@ -2,8 +2,6 @@
 
 namespace Core\Router;
 
-use JetBrains\PhpStorm\Pure;
-
 class Router {
 
     /**
@@ -43,7 +41,7 @@ class Router {
     /**
      * @return Route[]
      */
-    #[Pure] public function getRoutesByMethod(string $method): array {
+    public function getRoutesByMethod(string $method): array {
         $result = [];
         foreach ($this->routes as $item) {
             if ($item->getMethod() == $method) $result[] = $item;
