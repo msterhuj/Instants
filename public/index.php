@@ -1,11 +1,13 @@
 <?php
 
+error_reporting(E_ALL);
+
 require '../includes/autoload.php';
 
 use Core\App;
 use App\Controller\HomeController;
 
-$app = new App();
+$app = App::getInstance();
 
 $app->getRouter()
     // public zone

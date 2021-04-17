@@ -7,6 +7,7 @@ use Core\Router\RouterException;
 
 class App {
 
+    private static $_instance = null;
     private Router $router;
 
     public function __construct() {
@@ -30,6 +31,12 @@ class App {
             echo '404';
             // catch 404 route here
         }
+    }
 
+    public static function getInstance(): App {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new App();
+        }
+        return self::$_instance;
     }
 }
