@@ -50,6 +50,20 @@ class Router {
     }
 
     /**
+     * @param string $name
+     * @return Route
+     * @throws RouterException
+     */
+    public function getRoutesByName(string $name): Route {
+        $result = [];
+        foreach ($this->routes as $item) {
+            if ($item->getName() == $name)
+                return $item;
+        }
+        throw new RouterException();
+    }
+
+    /**
      * @param Route[] $routes
      * @return Route
      * @throws RouterException

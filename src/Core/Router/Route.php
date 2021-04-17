@@ -26,11 +26,6 @@ class Route {
         $this->callback = $callback;
     }
 
-    // Route Logic
-    public function render() {
-        // todo make render
-    }
-
     // Getter
 
     /**
