@@ -9,6 +9,11 @@ use App\Controller\HomeController;
 
 $app = App::getInstance();
 
+$user = new \App\Models\User();
+$user->setPwd("test");
+$user->save();
+
+
 $app->getRouter()
     // public zone
     ->get('/', 'home', HomeController::class) // home page
