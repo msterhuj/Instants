@@ -1,15 +1,15 @@
-<body>
-
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <div class="container">
         <a href="../" class="navbar-brand">Bootswatch</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span class="caret"></span></a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span
+                                class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="themes">
                         <a class="dropdown-item" href="../default/">Default</a>
                         <div class="dropdown-divider"></div>
@@ -43,9 +43,11 @@
                     <a class="nav-link" href="https://blog.bootswatch.com/">Blog</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Darkly <span class="caret"></span></a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Darkly <span
+                                class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="download">
-                        <a class="dropdown-item" rel="noopener" target="_blank" href="https://jsfiddle.net/bootswatch/1172d9hh/">Open in JSFiddle</a>
+                        <a class="dropdown-item" rel="noopener" target="_blank"
+                           href="https://jsfiddle.net/bootswatch/1172d9hh/">Open in JSFiddle</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../4/darkly/bootstrap.min.css" download>bootstrap.min.css</a>
                         <a class="dropdown-item" href="../4/darkly/bootstrap.css" download>bootstrap.css</a>
@@ -68,7 +70,8 @@
             </div>
             <div class="col-lg-4 col-md-5 col-sm-6">
                 <div class="sponsor">
-                    <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIE23N&placement=bootswatchcom" id="_carbonads_js"></script>
+                    <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIE23N&placement=bootswatchcom"
+                            id="_carbonads_js"></script>
                 </div>
             </div>
         </div>
@@ -86,7 +89,8 @@
                 <div class="bs-component">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                         <a class="navbar-brand" href="#">Navbar</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+                                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
@@ -107,7 +111,8 @@
                                     <a class="nav-link" href="#">About</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                       aria-haspopup="true" aria-expanded="false">Dropdown</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Another action</a>
@@ -128,7 +133,8 @@
                 <div class="bs-component">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                         <a class="navbar-brand" href="#">Navbar</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+                                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
@@ -149,7 +155,8 @@
                                     <a class="nav-link" href="#">About</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                       aria-haspopup="true" aria-expanded="false">Dropdown</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Another action</a>
@@ -170,7 +177,8 @@
                 <div class="bs-component">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                         <a class="navbar-brand" href="#">Navbar</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+                                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
@@ -191,7 +199,8 @@
                                     <a class="nav-link" href="#">About</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                       aria-haspopup="true" aria-expanded="false">Dropdown</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Another action</a>
@@ -258,7 +267,8 @@
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <button type="button" class="btn btn-primary">Primary</button>
                         <div class="btn-group" role="group">
-                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <a class="dropdown-item" href="#">Dropdown link</a>
                                 <a class="dropdown-item" href="#">Dropdown link</a>
@@ -269,7 +279,8 @@
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <button type="button" class="btn btn-success">Success</button>
                         <div class="btn-group" role="group">
-                            <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
                                 <a class="dropdown-item" href="#">Dropdown link</a>
                                 <a class="dropdown-item" href="#">Dropdown link</a>
@@ -280,7 +291,8 @@
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <button type="button" class="btn btn-info">Info</button>
                         <div class="btn-group" role="group">
-                            <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
                                 <a class="dropdown-item" href="#">Dropdown link</a>
                                 <a class="dropdown-item" href="#">Dropdown link</a>
@@ -291,7 +303,8 @@
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <button type="button" class="btn btn-danger">Danger</button>
                         <div class="btn-group" role="group">
-                            <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
                                 <a class="dropdown-item" href="#">Dropdown link</a>
                                 <a class="dropdown-item" href="#">Dropdown link</a>
@@ -412,7 +425,9 @@
             <div class="col-lg-4">
                 <div class="bs-component">
                     <h2>Example body text</h2>
-                    <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+                    <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque
+                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh
+                        ultricies vehicula.</p>
                     <p><small>This line of text is meant to be treated as fine print.</small></p>
                     <p>The following is <strong>rendered as bold text</strong>.</p>
                     <p>The following is <em>rendered as italicized text</em>.</p>
@@ -444,24 +459,30 @@
             <div class="col-lg-4">
                 <div class="bs-component">
                     <blockquote class="blockquote">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                            ante.</p>
+                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
+                                Title</cite></footer>
                     </blockquote>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="bs-component">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                            ante.</p>
+                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
+                                Title</cite></footer>
                     </blockquote>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="bs-component">
                     <blockquote class="blockquote text-right">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                            ante.</p>
+                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
+                                Title</cite></footer>
                     </blockquote>
                 </div>
             </div>
@@ -575,17 +596,21 @@
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                           value="email@example.com">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                       aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                       placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <label for="exampleSelect1">Example select</label>
@@ -613,26 +638,32 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">File input</label>
-                                <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                <input type="file" class="form-control-file" id="exampleInputFile"
+                                       aria-describedby="fileHelp">
+                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level
+                                    help text for the above input. It's a bit lighter and easily wraps to a new
+                                    line.</small>
                             </div>
                             <fieldset class="form-group">
                                 <legend>Radio buttons</legend>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                        <input type="radio" class="form-check-input" name="optionsRadios"
+                                               id="optionsRadios1" value="option1" checked>
                                         Option one is this and that&mdash;be sure to include why it's great
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        <input type="radio" class="form-check-input" name="optionsRadios"
+                                               id="optionsRadios2" value="option2">
                                         Option two can be something else and selecting it will deselect option one
                                     </label>
                                 </div>
                                 <div class="form-check disabled">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                                        <input type="radio" class="form-check-input" name="optionsRadios"
+                                               id="optionsRadios3" value="option3" disabled>
                                         Option three is disabled
                                     </label>
                                 </div>
@@ -667,14 +698,16 @@
                     <div class="form-group">
                         <fieldset disabled>
                             <label class="control-label" for="disabledInput">Disabled input</label>
-                            <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                            <input class="form-control" id="disabledInput" type="text"
+                                   placeholder="Disabled input here..." disabled>
                         </fieldset>
                     </div>
 
                     <div class="form-group">
                         <fieldset>
                             <label class="control-label" for="readOnlyInput">Readonly input</label>
-                            <input class="form-control" id="readOnlyInput" type="text" placeholder="Readonly input here..." readonly>
+                            <input class="form-control" id="readOnlyInput" type="text"
+                                   placeholder="Readonly input here..." readonly>
                         </fieldset>
                     </div>
 
@@ -692,7 +725,8 @@
 
                     <div class="form-group">
                         <label class="col-form-label col-form-label-lg" for="inputLarge">Large input</label>
-                        <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" id="inputLarge">
+                        <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg"
+                               id="inputLarge">
                     </div>
 
                     <div class="form-group">
@@ -702,7 +736,8 @@
 
                     <div class="form-group">
                         <label class="col-form-label col-form-label-sm" for="inputSmall">Small input</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" id="inputSmall">
+                        <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm"
+                               id="inputSmall">
                     </div>
 
                     <div class="form-group">
@@ -726,22 +761,26 @@
                         <legend>Custom forms</legend>
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+                                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input"
+                                       checked>
                                 <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+                                <label class="custom-control-label" for="customRadio2">Or toggle this other custom
+                                    radio</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" disabled>
+                                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input"
+                                       disabled>
                                 <label class="custom-control-label" for="customRadio3">Disabled custom radio</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
-                                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                                <label class="custom-control-label" for="customCheck1">Check this custom
+                                    checkbox</label>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck2" disabled>
@@ -751,7 +790,8 @@
                         <div class="form-group">
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+                                <label class="custom-control-label" for="customSwitch1">Toggle this switch
+                                    element</label>
                             </div>
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
@@ -809,7 +849,8 @@
                             <a class="nav-link disabled" href="#">Disabled</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="true" aria-expanded="false">Dropdown</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
@@ -821,16 +862,32 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade show active" id="home">
-                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+                                aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+                                helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu
+                                banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.
+                                Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
                         </div>
                         <div class="tab-pane fade" id="profile">
-                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+                                Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson
+                                artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo
+                                enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud
+                                organic, assumenda labore aesthetic magna delectus mollit.</p>
                         </div>
                         <div class="tab-pane fade" id="dropdown1">
-                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's
+                                organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify
+                                pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy
+                                hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred
+                                pitchfork.</p>
                         </div>
                         <div class="tab-pane fade" id="dropdown2">
-                            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+                            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold
+                                out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack
+                                portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred
+                                vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral
+                                locavore cosby sweater.</p>
                         </div>
                     </div>
                 </div>
@@ -844,7 +901,8 @@
                             <a class="nav-link active" href="#">Active</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="true" aria-expanded="false">Dropdown</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
@@ -868,7 +926,8 @@
                             <a class="nav-link active" href="#">Active</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="true" aria-expanded="false">Dropdown</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
@@ -1010,7 +1069,9 @@
                     <div class="alert alert-dismissible alert-warning">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <h4 class="alert-heading">Warning!</h4>
-                        <p class="mb-0">Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, <a href="#" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
+                        <p class="mb-0">Best check yo self, you're not looking too good. Nulla vitae elit libero, a
+                            pharetra augue. Praesent commodo cursus magna, <a href="#" class="alert-link">vel
+                                scelerisque nisl consectetur et</a>.</p>
                     </div>
                 </div>
             </div>
@@ -1020,7 +1081,8 @@
                 <div class="bs-component">
                     <div class="alert alert-dismissible alert-danger">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+                        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try
+                        submitting again.
                     </div>
                 </div>
             </div>
@@ -1028,7 +1090,8 @@
                 <div class="bs-component">
                     <div class="alert alert-dismissible alert-success">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+                        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important
+                            alert message</a>.
                     </div>
                 </div>
             </div>
@@ -1036,7 +1099,8 @@
                 <div class="bs-component">
                     <div class="alert alert-dismissible alert-info">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+                        <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>,
+                        but it's not super important.
                     </div>
                 </div>
             </div>
@@ -1046,7 +1110,8 @@
                 <div class="bs-component">
                     <div class="alert alert-dismissible alert-primary">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+                        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try
+                        submitting again.
                     </div>
                 </div>
             </div>
@@ -1054,7 +1119,8 @@
                 <div class="bs-component">
                     <div class="alert alert-dismissible alert-secondary">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+                        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important
+                            alert message</a>.
                     </div>
                 </div>
             </div>
@@ -1062,7 +1128,8 @@
                 <div class="bs-component">
                     <div class="alert alert-dismissible alert-light">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+                        <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>,
+                        but it's not super important.
                     </div>
                 </div>
             </div>
@@ -1104,58 +1171,72 @@
                 <h3 id="progress-basic">Basic</h3>
                 <div class="bs-component">
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
 
                 <h3 id="progress-alternatives">Contextual alternatives</h3>
                 <div class="bs-component">
                     <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50"
+                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75"
+                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="progress">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100"
+                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
 
                 <h3 id="progress-multiple">Multiple bars</h3>
                 <div class="bs-component">
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: 15%;" aria-valuenow="15"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20"
+                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
 
                 <h3 id="progress-striped">Striped</h3>
                 <div class="bs-component">
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%;"
+                             aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%;"
+                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%;"
+                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%;"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%;"
+                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
 
                 <h3 id="progress-animated">Animated</h3>
                 <div class="bs-component">
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
                     </div>
                 </div>
             </div>
@@ -1173,9 +1254,11 @@
                 <div class="bs-component">
                     <div class="jumbotron">
                         <h1 class="display-3">Hello, world!</h1>
-                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                            attention to featured content or information.</p>
                         <hr class="my-4">
-                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <p>It uses utility classes for typography and spacing to space content out within the larger
+                            container.</p>
                         <p class="lead">
                             <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                         </p>
@@ -1226,7 +1309,8 @@
                                 <h5 class="mb-1">List group item heading</h5>
                                 <small>3 days ago</small>
                             </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+                                risus varius blandit.</p>
                             <small>Donec id elit non mi porta.</small>
                         </a>
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -1234,7 +1318,8 @@
                                 <h5 class="mb-1">List group item heading</h5>
                                 <small class="text-muted">3 days ago</small>
                             </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+                                risus varius blandit.</p>
                             <small class="text-muted">Donec id elit non mi porta.</small>
                         </a>
                     </div>
@@ -1255,56 +1340,64 @@
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Primary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Secondary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Success card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Danger card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Warning card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Info card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card bg-light mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Light card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Dark card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                 </div>
@@ -1315,56 +1408,64 @@
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Primary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card border-secondary mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Secondary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card border-success mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Success card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card border-danger mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Danger card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card border-warning mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Warning card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card border-info mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Info card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card border-light mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Light card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                     <div class="card border-dark mb-3" style="max-width: 20rem;">
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h4 class="card-title">Dark card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                     </div>
                 </div>
@@ -1378,12 +1479,16 @@
                             <h5 class="card-title">Special title treatment</h5>
                             <h6 class="card-subtitle text-muted">Support card subtitle</h6>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%"
+                             height="200" aria-label="Placeholder: Image cap" focusable="false" role="img"
+                             preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180"
+                             style="font-size:1.125rem;text-anchor:middle">
                             <rect width="100%" height="100%" fill="#868e96"></rect>
                             <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
                         </svg>
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Cras justo odio</li>
@@ -1402,7 +1507,8 @@
                         <div class="card-body">
                             <h4 class="card-title">Card title</h4>
                             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
                             <a href="#" class="card-link">Card link</a>
                             <a href="#" class="card-link">Another link</a>
                         </div>
@@ -1450,23 +1556,43 @@
             <div class="col-lg-6">
                 <h2>Popovers</h2>
                 <div class="bs-component mb-5">
-                    <button type="button" class="btn btn-secondary" title="Popover Title" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Left</button>
+                    <button type="button" class="btn btn-secondary" title="Popover Title" data-container="body"
+                            data-toggle="popover" data-placement="left"
+                            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Left
+                    </button>
 
-                    <button type="button" class="btn btn-secondary" title="Popover Title" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top</button>
+                    <button type="button" class="btn btn-secondary" title="Popover Title" data-container="body"
+                            data-toggle="popover" data-placement="top"
+                            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top
+                    </button>
 
-                    <button type="button" class="btn btn-secondary" title="Popover Title" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Bottom</button>
+                    <button type="button" class="btn btn-secondary" title="Popover Title" data-container="body"
+                            data-toggle="popover" data-placement="bottom"
+                            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Bottom
+                    </button>
 
-                    <button type="button" class="btn btn-secondary" title="Popover Title" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Right</button>
+                    <button type="button" class="btn btn-secondary" title="Popover Title" data-container="body"
+                            data-toggle="popover" data-placement="right"
+                            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Right
+                    </button>
                 </div>
                 <h2>Tooltips</h2>
                 <div class="bs-component mb-5">
-                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Left</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left"
+                            title="Tooltip on left">Left
+                    </button>
 
-                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Top</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top"
+                            title="Tooltip on top">Top
+                    </button>
 
-                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Bottom</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom"
+                            title="Tooltip on bottom">Bottom
+                    </button>
 
-                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Right</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right"
+                            title="Tooltip on right">Right
+                    </button>
                 </div>
                 <h2>Toasts</h2>
                 <div class="bs-component">
@@ -1514,13 +1640,13 @@
                     <li><a href="../help/#donate">Donate</a></li>
                 </ul>
                 <p>Made by <a href="https://thomaspark.co/">Thomas Park</a>.</p>
-                <p>Code released under the <a href="https://github.com/thomaspark/bootswatch/blob/master/LICENSE">MIT License</a>.</p>
-                <p>Based on <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Icons from <a href="https://fontawesome.com/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="https://fonts.google.com/" rel="nofollow">Google</a>.</p>
+                <p>Code released under the <a href="https://github.com/thomaspark/bootswatch/blob/master/LICENSE">MIT
+                        License</a>.</p>
+                <p>Based on <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Icons from <a
+                            href="https://fontawesome.com/" rel="nofollow">Font Awesome</a>. Web fonts from <a
+                            href="https://fonts.google.com/" rel="nofollow">Google</a>.</p>
 
             </div>
         </div>
     </footer>
 </div>
-
-</body>
-</html>
