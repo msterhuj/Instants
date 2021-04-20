@@ -2,6 +2,8 @@
 
 namespace Core\Router;
 
+use Core\Debug;
+
 class Router {
 
     /**
@@ -46,7 +48,7 @@ class Router {
         foreach ($this->routes as $item) {
             if ($item->getMethod() == $method) $result[] = $item;
         }
-        return $this->routes;
+        return $result;
     }
 
     /**
@@ -70,6 +72,7 @@ class Router {
      */
     public function matchUrl(array $routes): Route {
         $request_url = trim($_SERVER["REQUEST_URI"], '/');
+
         foreach ($routes as $route) {
             $route_url = trim($route->getUrl(), '/');
             $route_url = preg_replace('(:::)', '([a-zA-Z-0-9]+)', $route_url);

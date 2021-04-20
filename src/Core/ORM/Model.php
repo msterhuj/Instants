@@ -25,17 +25,14 @@ abstract class Model extends Database {
      * @return string
      */
     public function getTableName(): string {
-        return $this->tablePrefix . $this->tableName;
+        return strtolower($this->tablePrefix . $this->tableName);
     }
-
-    /**
-     * @return array
-     */
-    abstract protected function getData(): array;
 
     public function save() {
-        $this->toInsert($this->getData(), $this->getTableName());
+        $con = $this->getConnection();
+        $con->exec($this->toInsert($this->getTableName()));
     }
+
     public function delete() {}
 
 }

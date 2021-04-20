@@ -4,11 +4,14 @@ namespace Core;
 
 abstract class Controller {
 
-    public function render(string $file, array $args) {
-        return "oui ca ces sur";
+    public function getUrl(string $name, array $params = null) {}
+    public function redirectTo(string $routeName, array $params = null) {}
+
+    public function isGet(): bool {
+        return $_SERVER['REQUEST_METHOD'] === 'GET';
     }
 
-    public function getUrl(string $name, array $param = null) {
-        // todo
+    public function isPost(): bool {
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 }

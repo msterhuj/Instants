@@ -18,7 +18,7 @@ class User extends Model {
      * User constructor.
      */
     public function __construct() {
-        parent::__construct(tabPrefix: "test_");
+        parent::__construct();
     }
 
     /**

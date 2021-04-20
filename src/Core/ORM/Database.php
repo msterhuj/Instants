@@ -2,7 +2,6 @@
 
 namespace Core\ORM;
 
-use Core\Debug;
 use PDO;
 
 abstract class Database {
@@ -26,16 +25,26 @@ abstract class Database {
         return new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->pass);
     }
 
-    public function toInsert(array $data, string $table): string {
-        // INSERT INTO `instant`.`users` (`username`, `email`, `pwd`, `roles`) VALUES ('username', 'efef', 'fe', 'efefe');
-        /**
-         * $queryPrepared = $connection->prepare("INSERT INTO pfh4_user (firstname, lastname, email, pwd) VALUES ( :firstname , :lastname , :email , :pwd );");
-        $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-        $queryPrepared->execute(["firstname" => $firstname, "lastname" => $lastname, "email" => $email, "pwd" => $pwd]);
-         */
-        $columns = implode(", ",array_keys($data));
-        $values  = implode(", ", array_values($data));
-        $sql = "INSERT INTO " . $table . " ($columns) VALUES ($values)";
-        return $sql;
+    /**
+     * @return array
+     */
+    abstract protected function getData(): array;
+
+    /**
+     * @param string $table
+     * @return string
+     */
+    public function toInsert(string $table): string {
+        $columns = "";
+        $values = "";
+        foreach ($this->getData() as $key => $value) {
+            if (!empty($value)) {
+                $columns .= $key . ",";
+                $values .= "'" . $value . "',";
+            }
+        }
+        $columns = trim($columns, ",");
+        $values = trim($values, ",");
+        return "INSERT INTO " . $table . " ($columns) VALUES ($values)";
     }
 }

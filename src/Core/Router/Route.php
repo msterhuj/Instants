@@ -17,16 +17,13 @@ class Route {
      * @param string $name
      * @param mixed $callback
      */
-    public function __construct(string $method, string $url, string $name, mixed $callback)
-    {
+    public function __construct(string $method, string $url, string $name, mixed $callback) {
         $this->method = $method;
         $this->url = $url;
         $this->name = $name;
         $this->param = "";
         $this->callback = $callback;
     }
-
-    // Getter
 
     /**
      * @return string
@@ -46,8 +43,7 @@ class Route {
      * @param string $url
      * @return Route
      */
-    public function setUrl(string $url): Route
-    {
+    public function setUrl(string $url): Route {
         $this->url = $url;
         return $this;
     }
@@ -55,25 +51,24 @@ class Route {
     /**
      * @return string
      */
-    public function getName(): string
-    {
+    public function getName(): string {
         return $this->name;
     }
 
     /**
      * @return string
      */
-    public function getParam(): string
-    {
+    public function getParam(): string {
         return $this->param;
     }
 
     /**
      * @param string $param
+     * @return Route
      */
-    public function setParam(string $param): void
-    {
+    public function setParam(string $param): Route {
         $this->param = $param;
+        return $this;
     }
 
     /**

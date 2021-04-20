@@ -1,4 +1,7 @@
 <?php
+
+error_reporting(E_ALL);
+
 spl_autoload_register(function($className) {
     $path = "../src/";
     $ext = ".php";

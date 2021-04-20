@@ -1,18 +1,11 @@
 <?php
 
-error_reporting(E_ALL);
-
 require '../includes/autoload.php';
 
 use Core\App;
 use App\Controller\HomeController;
 
 $app = App::getInstance();
-
-$user = new \App\Models\User();
-$user->setPwd("test");
-$user->save();
-
 
 $app->getRouter()
     // public zone
@@ -37,4 +30,4 @@ $app->getRouter()
     ->get('/admin/support', 'home', HomeController::class) // manage support ask
     ->get('/admin/users', 'home', HomeController::class) // manage user
 ;
-echo $app->exec();
+$app->exec();
