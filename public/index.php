@@ -12,7 +12,7 @@ $app->getRouter()
     ->get('/', 'home', HomeController::class) // home page
     ->get('/signup', 'home', HomeController::class) // signup form
     ->post('/signup', 'home', HomeController::class) // sign up action
-    ->get('/login', 'home', HomeController::class) // login form
+    ->get('/login', 'test', HomeController::class) // login form
     ->post('/login', 'home', HomeController::class) // login action
     ->get('/post/:::', 'home', HomeController::class) // show post
     ->get('/profile/:::', 'home', HomeController::class) // show profile of user
