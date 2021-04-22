@@ -14,7 +14,12 @@ class HomeController extends Controller {
         ]);
     }
     public function test(Route $route) {
-        $mailer = new Mailer();
-        $mailer->render("activation_code")->send();
+        $mail = new Mailer('gabin.lanore@gmail.com', 'Code de validation');
+        $mail->render("activation_code");
+        if($mail->send()){
+            echo 'Success!';
+        } else {
+            echo 'An error occurred.';
+        };
     }
 }
