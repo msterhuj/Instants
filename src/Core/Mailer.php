@@ -10,7 +10,7 @@ class Mailer {
     private string $hostname = "instants.dev";
     private mixed $socket;
     private string $username = "noreply@instants.dev";
-    private string $password = "";
+    private string $password = "69arieffet#";
     private int $connectionTimeout = 30;
     private int $responseTimeout = 8;
     private string $subject;
@@ -61,7 +61,7 @@ class Mailer {
         $this->setHeader('Subject', $this->subject);
         $this->setHeader('From', $this->formatAddress($this->from));
         $this->setHeader('Return-Path', $this->formatAddress($this->from));
-        $this->setHeader('To', $this->formatAddress($this->to));
+        $this->setHeader('To', $this->formatAddress([$this->to, null]));
 
         $boundary = md5(uniqid(microtime(true), true));
         $this->setHeader('Content-Type', 'multipart/mixed; boundary="mixed-' . $boundary . '"');
