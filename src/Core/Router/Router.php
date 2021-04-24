@@ -71,8 +71,7 @@ class Router {
      * @throws RouterException
      */
     public function matchUrl(array $routes): Route {
-        $request_url = trim($_SERVER["REQUEST_URI"], '/');
-
+        $request_url = explode('?', trim($_SERVER["REQUEST_URI"], '/'))[0];
         foreach ($routes as $route) {
             $route_url = trim($route->getUrl(), '/');
             $route_url = preg_replace('(:::)', '([a-zA-Z-0-9]+)', $route_url);
