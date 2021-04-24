@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Core\Debug;
 use Core\ORM\Model;
+use DateTime;
 
 class User extends Model {
 
@@ -13,23 +15,9 @@ class User extends Model {
     private ?string $pwd = null;
     private ?array $roles = null;
     private ?string $vreg = null;
-    private ?int $createdAt = null;
-    private ?int $updatedAt = null;
-
-    /**
-     * User constructor.
-     */
-    public function __construct() {
-        parent::__construct();
-    }
-
-    /**
-     * @param string $vreg
-     */
-    public static function ActivateByVreg(string $vreg) {
-        echo $vreg;
-        // todo get user by vreg and add role 'user' to user account clean vreg var
-    }
+    private ?string $createdAt = null;
+    private ?string $updatedAt = null;
+    private ?string $dateOfBirth = null;
 
     /**
      * @return array
@@ -44,8 +32,22 @@ class User extends Model {
             "role" => $this->roles,
             "vreg" => $this->vreg,
             "createdAt" => $this->getCreatedAt(),
-            "updatedAt" => $this->getUpdatedAt()
+            "updatedAt" => $this->getUpdatedAt(),
+            "dateOfBirth" => $this->dateOfBirth,
         ];
+    }
+
+    public function loadBy(string $key, string $value): User {
+        $con = $this->getConnection();
+        $prepare = $con->prepare("select * from user where $key = :value;");
+        $prepare->execute(["value" => $value]);
+        $result = $prepare->fetchObject();
+        foreach ($result as $key => $value) {
+            $this->$key = $value;
+        }
+        Debug::print($result);
+        Debug::print($this);
+        return $this;
     }
 
     /**
@@ -136,11 +138,11 @@ class User extends Model {
     }
 
     /**
-     * @param array $roles
+     * @param string $role
      * @return User
      */
-    public function setRoles(array $roles): User {
-        $this->roles = $roles;
+    public function addRoles(string $role): User {
+        $this->roles[] = $role;
         return $this;
     }
 
@@ -152,18 +154,21 @@ class User extends Model {
     }
 
     /**
-     * @param string $vreg
+     * @param string|null $vreg
      * @return User
      */
-    public function setVreg(string $vreg): User {
+    public function setVreg(string $vreg = null): User {
         $this->vreg = $vreg;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getCreatedAt(): ?int {
+    public function getCreatedAt(): ?string {
+        if (empty($this->createdAt)) {
+            $this->createdAt = date('Y-m-d H:i:s');
+        }
         return $this->createdAt;
     }
 
@@ -175,16 +180,24 @@ class User extends Model {
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getUpdatedAt(): ?int {
+    public function getUpdatedAt(): ?string {
+        $this->updatedAt = date('Y-m-d H:i:s');
         return $this->updatedAt;
     }
 
     /**
-     * @param int|null $updatedAt
+     * @return DateTime|null
      */
-    public function setUpdatedAt(?int $updatedAt): void {
-        $this->updatedAt = $updatedAt;
+    public function getDateOfBirth(): ?string {
+        return $this->dateOfBirth;
+    }
+
+    /**
+     * @param string|null $dateOfBirth
+     */
+    public function setDateOfBirth(?string $dateOfBirth): void {
+        $this->dateOfBirth = $dateOfBirth;
     }
 }

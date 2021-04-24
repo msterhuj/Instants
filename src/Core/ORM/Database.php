@@ -21,7 +21,7 @@ abstract class Database {
     /**
      * @return PDO
      */
-    protected function getConnection(): PDO {
+    public function getConnection(): PDO {
         return new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->pass);
     }
 
@@ -46,5 +46,19 @@ abstract class Database {
         $columns = trim($columns, ",");
         $values = trim($values, ",");
         return "INSERT INTO " . $table . " ($columns) VALUES ($values)";
+    }
+
+    protected function toUpdate(string $table): string {
+        $columns = "";
+        $values = "";
+        foreach ($this->getData() as $key => $value) {
+            if (!empty($value)) {
+                $columns .= $key . ",";
+                $values .= "'" . $value . "',";
+            }
+        }
+        $columns = trim($columns, ",");
+        $values = trim($values, ",");
+        return "update user set vreg = null where vreg = '60843f887d9fd'";
     }
 }

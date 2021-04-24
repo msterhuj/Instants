@@ -11,5 +11,8 @@
     <label for="vpass">Retype Password</label>
     <input id="vpass" name="vpass" type="password">
 
+    <label for="born">Enter born Date</label>
+    <input id="born" name="born" type="date">
+
     <button type="submit">Register !</button>
 </form>

@@ -4,6 +4,7 @@ require '../includes/autoload.php';
 
 session_start();
 
+use App\Models\User;
 use Core\App;
 use App\Controller\HomeController;
 use App\Controller\AuthController;

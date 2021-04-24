@@ -5,21 +5,24 @@ USE `instants`;
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user`
 (
-    `id`          int(11)      NOT NULL AUTO_INCREMENT,
-    `username`    varchar(30)  NOT NULL,
-    `description` varchar(255)      DEFAULT NULL,
-    `email`       varchar(255) NOT NULL,
-    `pwd`         varchar(60)  NOT NULL,
-    `vreg`        varchar(13)       DEFAULT NULL,
-    `createdAt`   timestamp    NOT NULL,
-    `updatedAt`   timestamp    NULL DEFAULT NULL,
-    `dateOfBirth` timestamp    NOT NULL,
+    `id`          INT(11)      NOT NULL AUTO_INCREMENT,
+    `username`    VARCHAR(30)  NOT NULL,
+    `description` VARCHAR(255) NULL     DEFAULT NULL,
+    `email`       VARCHAR(255) NOT NULL,
+    `pwd`         VARCHAR(60)  NOT NULL,
+    `role`        VARCHAR(255) NOT NULL DEFAULT '[]',
+    `vreg`        VARCHAR(13)  NULL     DEFAULT NULL,
+    `createdAt`   DATETIME     NOT NULL,
+    `updatedAt`   DATETIME     NOT NULL,
+    `dateOfBirth` DATETIME     NOT NULL,
     PRIMARY KEY (`id`),
-    UNIQUE KEY `username` (`username`),
-    UNIQUE KEY `email` (`email`),
-    UNIQUE KEY `vreg` (`vreg`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+    UNIQUE INDEX `username` (`username`),
+    UNIQUE INDEX `email` (`email`),
+    UNIQUE INDEX `vreg` (`vreg`)
+)
+    COLLATE = 'utf8_general_ci'
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 7;
 
 DROP TABLE IF EXISTS `follow`;
 CREATE TABLE IF NOT EXISTS `follow`

@@ -28,11 +28,11 @@ abstract class Model extends Database {
 
     public function save(bool $new = false) {
         $con = $this->getConnection();
+        echo $this->toInsert($this->getTableName());
         if ($new)
-            echo $this->toInsert($this->getTableName());
-            //$con->exec($this->toInsert($this->getTableName()));
+            $con->exec($this->toInsert($this->getTableName()));
         else
-            echo "update entity"; //todo setup update entity
+            echo $this->toUpdate($this->getTableName()); //todo setup update entity
     }
 
     public function delete() {}
