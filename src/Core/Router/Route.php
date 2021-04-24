@@ -28,6 +28,13 @@ class Route {
     /**
      * @return string
      */
+    public static function getRouteParam(): string {
+        return $_SESSION['ROUTE']->getParam();
+    }
+
+    /**
+     * @return string
+     */
     public function getMethod(): string {
         return $this->method;
     }

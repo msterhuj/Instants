@@ -8,5 +8,7 @@
     <script async src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script async src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>{{SYSTEM_CONTENT}}</body>
+    <body>
+        <a href="http://127.0.0.1:8000/activate/{{ CODE }}">Activate</a>
+    </body>
 </html>

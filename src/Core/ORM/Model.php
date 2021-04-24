@@ -2,8 +2,6 @@
 
 namespace Core\ORM;
 
-use Core\Debug;
-
 abstract class Model extends Database {
 
     private null|string $tablePrefix;
@@ -28,9 +26,13 @@ abstract class Model extends Database {
         return strtolower($this->tablePrefix . $this->tableName);
     }
 
-    public function save() {
+    public function save(bool $new = false) {
         $con = $this->getConnection();
-        $con->exec($this->toInsert($this->getTableName()));
+        if ($new)
+            echo $this->toInsert($this->getTableName());
+            //$con->exec($this->toInsert($this->getTableName()));
+        else
+            echo "update entity"; //todo setup update entity
     }
 
     public function delete() {}

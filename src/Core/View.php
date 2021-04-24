@@ -12,7 +12,7 @@ abstract class View {
         return ob_get_clean();
     }
 
-    public function render(string $page, array $data) {
+    public function render(string $page, array $data = []) {
         $template = $this->getTemplate("base");
 
         ob_start();

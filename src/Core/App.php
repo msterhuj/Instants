@@ -31,7 +31,9 @@ class App {
             $func = $route->getName();
             $controller = new $callback;
 
-            $controller->$func($route);
+            $_SESSION["ROUTE"] = $route;
+
+            $controller->$func();
         } catch (RouterException $e) {
             echo "Route non trouvée";
         }

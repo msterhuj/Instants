@@ -2,18 +2,24 @@
 
 require '../includes/autoload.php';
 
+session_start();
+
 use Core\App;
 use App\Controller\HomeController;
+use App\Controller\AuthController;
 
 $app = App::getInstance();
 
 $app->getRouter()
     // public zone
     ->get('/', 'home', HomeController::class) // home page
-    ->get('/signup', 'home', HomeController::class) // signup form
-    ->post('/signup', 'home', HomeController::class) // sign up action
-    ->get('/login', 'test', HomeController::class) // login form
-    ->post('/login', 'home', HomeController::class) // login action
+
+    ->get('/signup', 'signup', AuthController::class) // signup form
+    ->post('/signup', 'signup', AuthController::class) // sign up action
+    ->get('/login', 'login', AuthController::class) // login form
+    ->post('/login', 'login', AuthController::class) // login action
+    ->get('/activate/:::', 'activate', AuthController::class) // use code for validate account
+
     ->get('/post/:::', 'home', HomeController::class) // show post
     ->get('/profile/:::', 'home', HomeController::class) // show profile of user
     // user zone

@@ -12,13 +12,23 @@ class User extends Model {
     private ?string $email = null;
     private ?string $pwd = null;
     private ?array $roles = null;
-    private ?string $verified_code = null;
+    private ?string $vreg = null;
+    private ?int $createdAt = null;
+    private ?int $updatedAt = null;
 
     /**
      * User constructor.
      */
     public function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * @param string $vreg
+     */
+    public static function ActivateByVreg(string $vreg) {
+        echo $vreg;
+        // todo get user by vreg and add role 'user' to user account clean vreg var
     }
 
     /**
@@ -32,7 +42,9 @@ class User extends Model {
             "email" => $this->email,
             "pwd" => $this->pwd,
             "role" => $this->roles,
-            "verified_code" => $this->verified_code
+            "vreg" => $this->vreg,
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt()
         ];
     }
 
@@ -61,11 +73,11 @@ class User extends Model {
 
     /**
      * @param string $username
-     * @return User
+
      */
-    public function setUsername(string $username): User {
+    public function setUsername(string $username) {
         $this->username = $username;
-        return $this;
+
     }
 
     /**
@@ -135,16 +147,44 @@ class User extends Model {
     /**
      * @return string
      */
-    public function getVerifiedCode(): string {
-        return $this->verified_code;
+    public function getVreg(): string {
+        return $this->vreg;
     }
 
     /**
-     * @param string $verified_code
+     * @param string $vreg
      * @return User
      */
-    public function setVerifiedCode(string $verified_code): User {
-        $this->verified_code = $verified_code;
+    public function setVreg(string $vreg): User {
+        $this->vreg = $vreg;
         return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCreatedAt(): ?int {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param int|null $createdAt
+     */
+    public function setCreatedAt(?int $createdAt): void {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getUpdatedAt(): ?int {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param int|null $updatedAt
+     */
+    public function setUpdatedAt(?int $updatedAt): void {
+        $this->updatedAt = $updatedAt;
     }
 }

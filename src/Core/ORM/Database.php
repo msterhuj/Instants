@@ -15,13 +15,13 @@ abstract class Database {
         $this->host = "127.0.0.1";
         $this->user = "root";
         $this->pass = "";
-        $this->db = "instant";
+        $this->db = "instants";
     }
 
     /**
      * @return PDO
      */
-    public function getConnection(): PDO {
+    protected function getConnection(): PDO {
         return new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->pass);
     }
 
@@ -34,7 +34,7 @@ abstract class Database {
      * @param string $table
      * @return string
      */
-    public function toInsert(string $table): string {
+    protected function toInsert(string $table): string {
         $columns = "";
         $values = "";
         foreach ($this->getData() as $key => $value) {
