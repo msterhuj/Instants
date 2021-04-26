@@ -11,7 +11,6 @@ use Core\Router\Route;
 class AuthController extends Controller {
 
     public function signup() {
-
         if ($this->isPost()) {
             if(count($_POST) == 5
                 && !empty($_POST["username"])
@@ -68,32 +67,38 @@ class AuthController extends Controller {
                     $user->setPwd($pass);
                     $user->setDateOfBirth($dateOfBirth);
                     $user->setVreg(uniqid());
-                    $user->save(true);
+                    $user->save();
 
                     $mail = new Mailer($user->getEmail(), "Instants - Activation Link");
                     $mail->render("activation_link", [
                         "TITLE" => "Instants - Activation Link",
                         "CODE" => $user->getVreg()
                     ]);
-                    //if ($mail->send()) echo "check you mail";
-                    //else echo "error when sending mail";
+                    if ($mail->send()) echo "check you mail";
+                    else echo "error when sending mail";
                 }
                 Debug::print($_SESSION['ERROR']);
             }
-        }
-        $this->render("auth/signup", [
-            "TITLE" => "Signup"
-        ]);
-    }
-    public function login() {}
-    public function activate() {
-        $user = new User();
-        $user->loadBy("vreg", Route::getRouteParam());
-        if (!empty($user->getId())) {
-            $user->setVreg();
-            $user->addRoles("USER");
-            $user->save();
+        } else {
+            $this->render("auth/signup", [
+                "TITLE" => "Signup"
+            ]);
         }
     }
 
+    public function login() {}
+
+    public function activate() {
+        try {
+            // update account
+            $user = User::loadBy("vreg", Route::getRouteParam());
+            if (!empty($user->getId())) {
+                $user->setVreg();
+                $user->addRoles("USER");
+                $user->update();
+            }
+        } catch (\TypeError $e) {
+            // account not found
+        }
+    }
 }

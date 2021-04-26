@@ -2,6 +2,8 @@
 
 namespace Core\ORM;
 
+use Core\Debug;
+
 abstract class Model extends Database {
 
     private null|string $tablePrefix;
@@ -11,7 +13,6 @@ abstract class Model extends Database {
      * Model constructor.
      */
     public function __construct(string $tabPrefix = null, string $tableName = null) {
-        parent::__construct();
         $this->tablePrefix = $tabPrefix;
         if (empty($tableName)) {
             $class = explode('\\', get_called_class());
@@ -26,13 +27,14 @@ abstract class Model extends Database {
         return strtolower($this->tablePrefix . $this->tableName);
     }
 
-    public function save(bool $new = false) {
+    public function save() {
         $con = $this->getConnection();
-        echo $this->toInsert($this->getTableName());
-        if ($new)
-            $con->exec($this->toInsert($this->getTableName()));
-        else
-            echo $this->toUpdate($this->getTableName()); //todo setup update entity
+        $con->exec($this->toInsert($this->getTableName()));
+    }
+
+    public function update() {
+        $con = $this->getConnection();
+        $con->exec($this->toUpdate($this->getTableName()));
     }
 
     public function delete() {}

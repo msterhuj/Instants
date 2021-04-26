@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Core\Debug;
+use Core\ORM\Database;
 use Core\ORM\Model;
 use DateTime;
 
@@ -33,21 +33,16 @@ class User extends Model {
             "vreg" => $this->vreg,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
-            "dateOfBirth" => $this->dateOfBirth,
+            "dateOfBirth" => $this->getDateOfBirth(),
         ];
     }
 
-    public function loadBy(string $key, string $value): User {
-        $con = $this->getConnection();
+    public static function loadBy(string $key, string $value): User {
+        $con = Database::getPDO();
         $prepare = $con->prepare("select * from user where $key = :value;");
         $prepare->execute(["value" => $value]);
-        $result = $prepare->fetchObject();
-        foreach ($result as $key => $value) {
-            $this->$key = $value;
-        }
-        Debug::print($result);
-        Debug::print($this);
-        return $this;
+        $result = $prepare->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -55,15 +50,6 @@ class User extends Model {
      */
     public function getId(): int {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     * @return User
-     */
-    public function setId(int $id): User {
-        $this->id = $id;
-        return $this;
     }
 
     /**
@@ -142,7 +128,8 @@ class User extends Model {
      * @return User
      */
     public function addRoles(string $role): User {
-        $this->roles[] = $role;
+        if (!in_array($role, $this->roles))
+            $this->roles[] = $role;
         return $this;
     }
 
@@ -170,13 +157,6 @@ class User extends Model {
             $this->createdAt = date('Y-m-d H:i:s');
         }
         return $this->createdAt;
-    }
-
-    /**
-     * @param int|null $createdAt
-     */
-    public function setCreatedAt(?int $createdAt): void {
-        $this->createdAt = $createdAt;
     }
 
     /**
