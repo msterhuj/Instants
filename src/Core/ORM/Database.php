@@ -2,27 +2,17 @@
 
 namespace Core\ORM;
 
+use App\Config;
 use PDO;
 
 abstract class Database {
-
-    private string $host, $user, $pass, $db;
-
-    /**
-     * Database constructor.
-     */
-    public function __construct() {
-        $this->host = "127.0.0.1";
-        $this->user = "root";
-        $this->pass = "";
-        $this->db = "instants";
-    }
-
     /**
      * @return PDO
      */
     public function getConnection(): PDO {
-        return new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->pass);
+        return new PDO("mysql:host=".Config::DB_HOST.
+                            ";dbname=".Config::DB_NAME.",".
+            Config::DB_USER, Config::DB_PASS);
     }
 
     /**

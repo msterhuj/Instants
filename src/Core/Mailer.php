@@ -2,31 +2,24 @@
 
 namespace Core;
 
+use App\Config;
+
 class Mailer {
     const CRLF = "\r\n";
 
-    private string $server = "mail.instants.dev";
-    private int $port = 587;
-    private string $hostname = "instants.dev";
     private mixed $socket;
-    private string $username = "noreply@instants.dev";
-    private string $password = "69arieffet#";
-    private int $connectionTimeout = 30;
-    private int $responseTimeout = 8;
     private string $subject;
     private string $to;
     private array $from;
-    private $protocol = 'tcp';
     private $content = null;
     private array $logs = array();
-    private string $charset = 'utf-8';
     private array $headers = array();
 
     public function __construct(string $address, string $subject) {
         $this->setHeader('X-Mailer', 'PHP/' . phpversion());
         $this->setHeader('MIME-Version', '1.0');
         $this->to = $address;
-        $this->from = [ $this->username, 'No Reply' ];
+        $this->from = [ Config::MAIL_USER, 'No Reply' ];
         $this->subject = $subject;
     }
 
@@ -38,22 +31,22 @@ class Mailer {
     public function send(): bool {
         $message = null;
         $this->socket = fsockopen(
-            $this->protocol . '://' . $this->server,
-            $this->port,
+            'tcp://' . Config::MAIL_SRV,
+            Config::MAIL_PORT,
             $errorNumber,
             $errorMessage,
-            $this->connectionTimeout
+            Config::MAIL_TIMEOUT
         );
 
         if (empty($this->socket)) return false;
         $this->logs['CONNECTION'] = $this->getResponse();
-        $this->logs['HELLO'][1] = $this->sendCommand('EHLO ' . $this->hostname);
+        $this->logs['HELLO'][1] = $this->sendCommand('EHLO ' . Config::MAIL_HOSTNAME);
         $this->logs['STARTTLS'] = $this->sendCommand('STARTTLS');
         stream_socket_enable_crypto($this->socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
-        $this->logs['HELLO'][2] = $this->sendCommand('EHLO ' . $this->hostname);
+        $this->logs['HELLO'][2] = $this->sendCommand('EHLO ' . Config::MAIL_HOSTNAME);
         $this->logs['AUTH'] = $this->sendCommand('AUTH LOGIN');
-        $this->logs['USERNAME'] = $this->sendCommand(base64_encode($this->username));
-        $this->logs['PASSWORD'] = $this->sendCommand(base64_encode($this->password));
+        $this->logs['USERNAME'] = $this->sendCommand(base64_encode(Config::MAIL_USER));
+        $this->logs['PASSWORD'] = $this->sendCommand(base64_encode(Config::MAIL_PASS));
         $this->logs['MAIL_FROM'] = $this->sendCommand('MAIL FROM: <' . $this->from[0] . '>');
         $this->logs['RECIPIENTS'][] = $this->sendCommand('RCPT TO: <' . $this->to . '>');
 
@@ -69,7 +62,7 @@ class Mailer {
         $this->headers['Content-Type'] = 'multipart/alternative; boundary="alt-' . $boundary . '"';
 
         $message .= '--alt-' . $boundary . self::CRLF;
-        $message .= 'Content-Type: text/html; charset=' . $this->charset . self::CRLF;
+        $message .= 'Content-Type: text/html; charset=utf-8' . self::CRLF;
         $message .= 'Content-Transfer-Encoding: base64' . self::CRLF . self::CRLF;
         $message .= chunk_split(base64_encode($this->content)) . self::CRLF;
         $message .= '--alt-' . $boundary . '--' . self::CRLF . self::CRLF;
@@ -90,7 +83,7 @@ class Mailer {
 
     private function getResponse(): string {
         $response = '';
-        stream_set_timeout($this->socket, $this->responseTimeout);
+        stream_set_timeout($this->socket, Config::MAIL_TIMEOUT);
         while (($line = fgets($this->socket, 515)) !== false) {
             $response .= trim($line) . "\n";
             if (substr($line, 3, 1) == ' ') {
