@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use Core\Controller;
+use Core\Controller\Controller;
 use Core\Mailer;
-use Core\Router\Route;
 
 class HomeController extends Controller {
 

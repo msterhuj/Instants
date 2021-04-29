@@ -2,36 +2,39 @@
 
 namespace App\Controller;
 
+use App\Exception\UserNotFoundException;
 use App\Models\User;
-use Core\Controller;
+use Core\Controller\Controller;
 use Core\Debug;
 use Core\Mailer;
+use Core\ORM\Database;
 use Core\Router\Route;
 
 class AuthController extends Controller {
 
     public function signup() {
         if ($this->isPost()) {
-            if(count($_POST) == 5
+
+            if(count($_POST) == 6
                 && !empty($_POST["username"])
                 && !empty($_POST["email"])
                 && !empty($_POST["pass"])
                 && !empty($_POST["vpass"])
                 && !empty($_POST["born"]))
             {
-                $user = new User();
-                $username = mb_strtolower(trim($_POST["username"]));
-                $email = mb_strtolower(trim($_POST["email"]));
-                $pass = $_POST["pass"];
-                $vpass = $_POST["vpass"];
-                $dateOfBirth = $_POST["born"];
+                $data = $this->getBody();
+                $username = mb_strtolower(trim($data["username"]));
+                $email = mb_strtolower(trim($data["email"]));
+                $pass = $data["pass"];
+                $vpass = $data["vpass"];
+                $dateOfBirth = $data["born"];
 
-                $connection = $user->getConnection();
+                $connection = Database::getPDO();
 
-                if (strlen($username) < 2 || strlen($username) > 30) {
+                /* TODO
+                 * if (strlen($username) < 2 || strlen($username) > 30) {
                     $_SESSION['ERROR'][] = "Username pas bien";
                 } else {
-
                     $queryPrepared = $connection->prepare("SELECT username FROM user WHERE username=:username;");
                     $queryPrepared->execute(["username" => $username]);
                     if ($queryPrepared->rowCount() != 0) {
@@ -56,12 +59,16 @@ class AuthController extends Controller {
                 ) {
                     $_SESSION['ERROR'][] = "Password pas bien";
                 }
+
+                if (!$this->checkCSRF($_POST["csrf"]))
+                    $_SESSION['ERROR'][] = "SCRF invalide";
+
                 if ($pass != $vpass) {
                     $_SESSION['ERROR'][] = "VPassword pas bien";
-                }
+                }*/
 
                 if (empty($_SESSION['ERROR'])) {
-                    Debug::print($_POST);
+                    $user = new User();
                     $user->setUsername($username);
                     $user->setEmail($email);
                     $user->setPwd($pass);
@@ -77,16 +84,14 @@ class AuthController extends Controller {
                     if ($mail->send()) echo "check you mail";
                     else echo "error when sending mail";
                 }
-                Debug::print($_SESSION['ERROR']);
             }
         } else {
             $this->render("auth/signup", [
-                "TITLE" => "Signup"
+                "TITLE" => "Signup",
+                "CSRF" => $this->generateCSRF()
             ]);
         }
     }
-
-    public function login() {}
 
     public function activate() {
         try {
@@ -101,5 +106,35 @@ class AuthController extends Controller {
             echo $e;
             // account not found
         }
+    }
+
+    public function login() {
+        if ($this->isPost()){
+            $data = $this->getBody();
+            try {
+                $user = User::loadBy("username", $data["username"]);
+
+                if (!$this->checkCSRF($data["csrf"])) $_SESSION['ERROR'] = "Invalid csrf";
+                if (!$user->emailValidated()) $_SESSION['ERROR'] = "Email not verified";
+
+                if (empty($_SESSION['ERROR'])) {
+                    if ($user->checkPwd($data["pass"])) $_SESSION["USER"] = $user;
+                    else $_SESSION['ERROR'] = "Invalid password";
+                }
+
+            } catch (UserNotFoundException) {
+                $_SESSION['ERROR'] = "User not found";
+            }
+        }
+
+        $this->render("auth/login", [
+            "TITLE" => "Login",
+            "CSRF" => $this->generateCSRF()
+        ]);
+    }
+
+    public function logout() {
+        session_destroy();
+        $this->redirectTo("home");
     }
 }

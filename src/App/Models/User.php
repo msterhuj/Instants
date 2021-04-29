@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Exception\UserNotFoundException;
 use Core\ORM\Database;
 use Core\ORM\Model;
 use DateTime;
@@ -19,6 +20,13 @@ class User extends Model {
     private ?string $updatedAt = null;
     private ?string $dateOfBirth = null;
 
+    /**
+     * Implement parent method
+     */
+
+    /**
+     * @return array
+     */
     protected function getData(): array {
         return [
             "id" => $this->id,
@@ -34,12 +42,18 @@ class User extends Model {
         ];
     }
 
-
+    /**
+     * @return string|null
+     */
     public function serialize(): ?string {
         return serialize($this->getData());
     }
 
+    /**
+     * @throws UserNotFoundException
+     */
     public function unserialize($data): User {
+        if (!$data) throw new UserNotFoundException();
         foreach ($data as $key => $value) {
             if (is_array($this->$key)) $this->$key = unserialize($value);
             else $this->$key = $value;
@@ -47,6 +61,9 @@ class User extends Model {
         return $this;
     }
 
+    /**
+     * @throws UserNotFoundException
+     */
     public static function loadBy(string $key, string $value): \stdClass|User {
         $con = Database::getPDO();
         $prepare = $con->prepare("select * from user where $key = :value;");
@@ -56,6 +73,47 @@ class User extends Model {
         $user->unserialize($result);
         return $user;
     }
+
+    /**
+     * Object logic
+     */
+
+    /**
+     * @param string $role
+     * @return User
+     */
+    public function addRoles(string $role): User {
+        if (!in_array($role, $this->role))
+            $this->role[] = $role;
+        return $this;
+    }
+
+    /**
+     * @param string $role
+     * @return User
+     */
+    public function delRoles(string $role): User {
+        if (($key = array_search($role, $this->role)) !== false)
+            unset($this->role[$key]);
+
+        return $this;
+    }
+
+    public function emailValidated() {
+        return empty($this->vreg);
+    }
+
+    /**
+     * @param string $pwd
+     * @return bool
+     */
+    public function checkPwd(string $pwd): bool {
+        return password_verify($pwd, $this->pwd);
+    }
+
+    /**
+     * Getter Setter
+     */
 
     /**
      * @return int
@@ -73,11 +131,9 @@ class User extends Model {
 
     /**
      * @param string $username
-
      */
     public function setUsername(string $username) {
         $this->username = $username;
-
     }
 
     /**
@@ -124,7 +180,7 @@ class User extends Model {
      * @return User
      */
     public function setPwd(string $pwd): User {
-        $this->pwd = password_hash($pwd, PASSWORD_BCRYPT);
+        $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
         return $this;
     }
 
@@ -133,26 +189,6 @@ class User extends Model {
      */
     public function getRoles(): array {
         return $this->role;
-    }
-
-    /**
-     * @param string $role
-     * @return User
-     */
-    public function addRoles(string $role): User {
-        if (!in_array($role, $this->role))
-            $this->role[] = $role;
-        return $this;
-    }
-    /**
-     * @param string $role
-     * @return User
-     */
-    public function delRoles(string $role): User {
-        if (($key = array_search($role, $this->role)) !== false)
-            unset($this->role[$key]);
-
-        return $this;
     }
 
     /**

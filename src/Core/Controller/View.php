@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Core\Controller;
 
 abstract class View {
 
@@ -17,7 +17,7 @@ abstract class View {
 
         ob_start();
         include_once $this->ROOT_DIR . "/$page.php";
-        $content = str_replace("{{SYSTEM_CONTENT}}", ob_get_clean(), $template);
+        $content = str_replace("{{ SYSTEM_CONTENT }}", ob_get_clean(), $template);
 
         foreach ($data as $key => $value) {
             $content = str_replace("{{ " . $key . " }}", $value, $content);

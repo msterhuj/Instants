@@ -4,7 +4,8 @@ require '../includes/autoload.php';
 
 session_start();
 
-use App\Models\User;
+unset($_SESSION['ERROR']);
+
 use Core\App;
 use App\Controller\HomeController;
 use App\Controller\AuthController;
@@ -24,7 +25,7 @@ $app->getRouter()
     ->get('/post/:::', 'home', HomeController::class) // show post
     ->get('/profile/:::', 'home', HomeController::class) // show profile of user
     // user zone
-    ->get('/logout', 'home', HomeController::class) // logout user
+    ->get('/logout', 'logout', AuthController::class) // logout user
     ->get('/bookmarks/', 'home', HomeController::class) // all post saved
     ->get('/report/', 'home', HomeController::class) // report a post
     ->get('/support/', 'home', HomeController::class) // support tech

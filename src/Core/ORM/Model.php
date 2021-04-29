@@ -2,8 +2,6 @@
 
 namespace Core\ORM;
 
-use Core\Debug;
-
 abstract class Model extends Database {
 
     private null|string $tablePrefix;
@@ -38,5 +36,4 @@ abstract class Model extends Database {
     }
 
     public function delete() {}
-
 }

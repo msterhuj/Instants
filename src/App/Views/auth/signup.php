@@ -14,5 +14,7 @@
     <label for="born">Enter born Date</label>
     <input id="born" name="born" type="date">
 
+    <input name="csrf" value="{{ CSRF }}" hidden>
+
     <button type="submit">Register !</button>
 </form>

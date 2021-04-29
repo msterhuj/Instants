@@ -69,6 +69,6 @@ abstract class Database implements Serializable {
             }
         }
         $set = trim($set, ",");
-        return 'update ' . $table . ' set '.  $set . ' where id = ' .$newObj["id"];
+        return 'update ' . $table . ' set '.  $set . ' where id = ' . $newObj["id"];
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Core\Router;
 
-use Core\Debug;
-
 class Router {
 
     /**
@@ -57,7 +55,6 @@ class Router {
      * @throws RouterException
      */
     public function getRoutesByName(string $name): Route {
-        $result = [];
         foreach ($this->routes as $item) {
             if ($item->getName() == $name)
                 return $item;
