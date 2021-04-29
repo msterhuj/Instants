@@ -13,15 +13,12 @@ class User extends Model {
     private ?string $description = null;
     private ?string $email = null;
     private ?string $pwd = null;
-    private ?array $roles = null;
+    private array $role = [];
     private ?string $vreg = null;
     private ?string $createdAt = null;
     private ?string $updatedAt = null;
     private ?string $dateOfBirth = null;
 
-    /**
-     * @return array
-     */
     protected function getData(): array {
         return [
             "id" => $this->id,
@@ -29,7 +26,7 @@ class User extends Model {
             "description" => $this->description,
             "email" => $this->email,
             "pwd" => $this->pwd,
-            "role" => $this->roles,
+            "role" => serialize($this->role),
             "vreg" => $this->vreg,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
@@ -37,12 +34,27 @@ class User extends Model {
         ];
     }
 
-    public static function loadBy(string $key, string $value): User {
+
+    public function serialize(): ?string {
+        return serialize($this->getData());
+    }
+
+    public function unserialize($data): User {
+        foreach ($data as $key => $value) {
+            if (is_array($this->$key)) $this->$key = unserialize($value);
+            else $this->$key = $value;
+        }
+        return $this;
+    }
+
+    public static function loadBy(string $key, string $value): \stdClass|User {
         $con = Database::getPDO();
         $prepare = $con->prepare("select * from user where $key = :value;");
         $prepare->execute(["value" => $value]);
-        $result = $prepare->fetchObject(self::class);
-        return $result;
+        $result = $prepare->fetchObject();
+        $user = new User();
+        $user->unserialize($result);
+        return $user;
     }
 
     /**
@@ -120,7 +132,7 @@ class User extends Model {
      * @return array
      */
     public function getRoles(): array {
-        return $this->roles;
+        return $this->role;
     }
 
     /**
@@ -128,8 +140,18 @@ class User extends Model {
      * @return User
      */
     public function addRoles(string $role): User {
-        if (!in_array($role, $this->roles))
-            $this->roles[] = $role;
+        if (!in_array($role, $this->role))
+            $this->role[] = $role;
+        return $this;
+    }
+    /**
+     * @param string $role
+     * @return User
+     */
+    public function delRoles(string $role): User {
+        if (($key = array_search($role, $this->role)) !== false)
+            unset($this->role[$key]);
+
         return $this;
     }
 

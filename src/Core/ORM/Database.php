@@ -3,10 +3,10 @@
 namespace Core\ORM;
 
 use App\Config;
-use Core\Debug;
 use PDO;
+use Serializable;
 
-abstract class Database {
+abstract class Database implements Serializable {
 
     public static function getPDO(): PDO {
         return new PDO("mysql:host=".Config::DB_HOST.";dbname=".Config::DB_NAME,
@@ -42,8 +42,7 @@ abstract class Database {
         foreach ($this->getData() as $key => $value) {
             if (!empty($value)) {
                 $columns .= $key . ",";
-                if (is_array($value)) $values .= "'[\"".implode("','",$value)."\"]',";
-                else $values .= "'" . $value . "',";
+                $values .= "'" . $value . "',";
             }
         }
         $columns = trim($columns, ",");
@@ -51,23 +50,21 @@ abstract class Database {
         return "INSERT INTO $table ($columns) VALUES ($values)";
     }
 
+    /**
+     * @param string $table
+     * @return string
+     */
     protected function toUpdate(string $table): string {
 
         $newObj = $this->getData();
         $oldObj = get_called_class()::loadBy("id", $newObj["id"])->getData();
 
-        Debug::print($newObj);
-        Debug::print($oldObj);
-
         $set = "";
 
         foreach ($newObj as $key => $value) {
             if ($oldObj[$key] != $newObj[$key]) {
-                $values = "";
-                if (is_array($value)) $values .= "'[\"".implode("','",$value)."\"]',";
-                else $values .= "'" . $value . "',";
-
-                if (empty($value) && !is_array($values)) $set .= $key . " = " . 'null,';
+                $values = "'" . $value . "',";
+                if (empty($value)) $set .= $key . " = " . 'null,';
                 else $set .= $key . " = " . $values;
             }
         }

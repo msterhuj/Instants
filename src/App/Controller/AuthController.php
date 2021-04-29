@@ -98,6 +98,7 @@ class AuthController extends Controller {
                 $user->update();
             }
         } catch (\TypeError $e) {
+            echo $e;
             // account not found
         }
     }
