@@ -1,35 +1,30 @@
-version: '3.2'
+version: '3.3'
 
-networks:
-  proxy:
-    external: true
-    driver: overlay
-    attachable: true
+volumes:
+  mariadb:
 
 services:
-  imfamous:
-    image: 7.4.16-apache-buster
-    networks:
-      - proxy
-    deploy:
-      labels:
-        - traefik.enable=true
-        - traefik.docker.network=proxy
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    volumes:
+      - mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+    ports:
+      - "3306:3306"
 
-        # services
-        - traefik.http.services.imfamous-service.loadbalancer.server.port=80
-
-        # router http
-        - traefik.http.routers.imfamous-http.rule=Host(`imfamous.netbytes.space`)
-        - traefik.http.routers.imfamous-http.entryPoints=web
-        - traefik.http.routers.imfamous-http.service=imfamous-service
-        - traefik.http.routers.imfamous-http.middlewares=https-redirect
-
-        # router https
-        - traefik.http.routers.imfamous-https.rule=Host(`imfamous.netbytes.space`)
-        - traefik.http.routers.imfamous-https.entryPoints=websecure
-        - traefik.http.routers.imfamous-https.service=imfamous-service
-        - traefik.http.routers.imfamous-https.tls=true
-        - traefik.http.routers.imfamous-https.tls.options=myTLSOptions@file
-        - traefik.http.routers.imfamous-https.tls.certresolver=netbytes
+  phpmyadmin:
+    image: phpmyadmin
     restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mariadb
+
+  app:
+    build: .
+    image: msterhuj/instants
+    ports:
+     - 80:80

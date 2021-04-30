@@ -1,0 +1,6 @@
+db.sql
+.gitignore
+.git/
+.idea/
+docker-compose.yml
+Dockerfile
