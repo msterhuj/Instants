@@ -27,4 +27,6 @@ services:
     build: .
     image: msterhuj/instants
     ports:
-     - 80:80
+      - 80:80
+    volumes:
+      - ./:/var/www

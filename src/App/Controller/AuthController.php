@@ -83,6 +83,7 @@ class AuthController extends Controller {
                     ]);
                     if ($mail->send()) echo "check you mail";
                     else echo "error when sending mail";
+                    $this->redirectTo("home");
                 }
             }
         } else {

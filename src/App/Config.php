@@ -6,7 +6,7 @@ class Config {
     const DB_HOST = "mariadb";
     const DB_NAME = "instants";
     const DB_USER = "root";
-    const DB_PASS = "";
+    const DB_PASS = "root";
 
     const MAIL_HOSTNAME = "instants.dev";
     const MAIL_SRV = "mail.instants.dev";

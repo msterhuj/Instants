@@ -2,18 +2,31 @@
 
 namespace Core\Controller;
 
+use Core\App;
+use Core\Router\RouterException;
 use Exception;
 
 abstract class Controller extends View {
 
-    public function getUrl(string $name, string $param = null) {
+    /**
+     * @param string $name
+     * @param string|null $param
+     * @return string
+     * @throws RouterException
+     */
+    public static function getUrl(string $name, string $param = null): string {
         $app = App::getInstance();
         $router = $app->getRouter()->getRoutesByName($name);
         return preg_replace('(:::)', $param, $router->getUrl());
     }
 
-    public function redirectTo(string $routeName, string $param = null) {
-        header('Location: ' . $this->getUrl($routeName, $param));
+    /**
+     * @param string $routeName
+     * @param string|null $param
+     * @throws RouterException
+     */
+    public function redirectTo(string $routeName, string $param = null): void {
+        header('Location: ' . self::getUrl($routeName, $param));
     }
 
     /**
@@ -49,11 +62,18 @@ abstract class Controller extends View {
     }
 
     /**
+     * @return bool
+     */
+    public function isError(): bool {
+        return isset($_SERVER["ERROR"]);
+    }
+
+    /**
      * @return string
      * @throws Exception
      */
     public function generateCSRF(): string {
-        return $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        return $_SESSION['CSRF'] = bin2hex(random_bytes(32));
     }
 
     /**
@@ -61,6 +81,6 @@ abstract class Controller extends View {
      * @return bool
      */
     public function checkCSRF(string $token): bool {
-        return $_SESSION['csrf'] == $token;
+        return $_SESSION['CSRF'] == $token;
     }
 }

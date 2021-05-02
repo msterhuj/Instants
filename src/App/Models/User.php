@@ -64,13 +64,12 @@ class User extends Model {
     /**
      * @throws UserNotFoundException
      */
-    public static function loadBy(string $key, string $value): \stdClass|User {
+    public static function loadBy(string $key, string $value): User {
         $con = Database::getPDO();
         $prepare = $con->prepare("select * from user where $key = :value;");
         $prepare->execute(["value" => $value]);
-        $result = $prepare->fetchObject();
         $user = new User();
-        $user->unserialize($result);
+        $user->unserialize($prepare->fetchObject());
         return $user;
     }
 
