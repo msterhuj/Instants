@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Exception\UserNotFoundException;
 use App\Models\User;
 use Core\Controller\Controller;
-use Core\Debug;
 use Core\Mailer;
 use Core\ORM\Database;
 use Core\Router\Route;
@@ -87,7 +86,7 @@ class AuthController extends Controller {
                 }
             }
         } else {
-            $this->render("auth/signup", [
+            $this->appendCSS(["auth"])->render("auth/signup", [
                 "TITLE" => "Signup",
                 "CSRF" => $this->generateCSRF()
             ]);
@@ -106,6 +105,7 @@ class AuthController extends Controller {
         } catch (\TypeError $e) {
             echo $e;
             // account not found
+        } catch (UserNotFoundException $e) {
         }
     }
 
@@ -128,7 +128,7 @@ class AuthController extends Controller {
             }
         }
 
-        $this->render("auth/login", [
+        $this->appendCSS(["auth"])->render("auth/login", [
             "TITLE" => "Login",
             "CSRF" => $this->generateCSRF()
         ]);

@@ -1,19 +1,24 @@
-<link rel="stylesheet" href="/css/auth.css">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="text-center login-box">
-            <div class="card bg-light shadow border-0">
+        <div class="text-center">
+            <div class="card bg-light shadow border-0" style="width: 20rem;">
                 <div class="card-body">
                     <h2>Instants</h2>
                     <h3>All now !</h3>
                     <hr class="my-4">
                     <h4>Please sign in</h4>
 
-                    <div class="text-center text-muted mb-4">
-                        <div class="alert alert-danger">
-                            <p>add error here if is set</p>
+                    <?php if (isset($_SESSION["ERROR"])) { ?>
+                        <div class="text-center text-muted mb-4">
+                            <div class="alert alert-danger">
+                                <ul>
+                                    <?php foreach ($_SESSION["ERROR"] as $value) {
+                                        echo '<li>'. $value;
+                                    } ?>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
 
                     <form method="post" action="/login">
 
