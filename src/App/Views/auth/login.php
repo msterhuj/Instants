@@ -8,7 +8,7 @@
                     <hr class="my-4">
                     <h4>Please sign in</h4>
 
-                    <?php if (isset($_SESSION["ERROR"])) { ?>
+                    <?php if (isset($_SESSION["ERROR"])) {?>
                         <div class="text-center text-muted mb-4">
                             <div class="alert alert-danger">
                                 <ul>

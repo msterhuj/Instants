@@ -115,16 +115,16 @@ class AuthController extends Controller {
             try {
                 $user = User::loadBy("username", $data["username"]);
 
-                if (!$this->checkCSRF($data["csrf"])) $_SESSION['ERROR'] = "Invalid csrf";
-                if (!$user->emailValidated()) $_SESSION['ERROR'] = "Email not verified";
+                if (!$this->checkCSRF($data["csrf"])) $_SESSION['ERROR'][] = "Invalid csrf";
+                if (!$user->emailValidated()) $_SESSION['ERROR'][] = "Email not verified";
 
                 if (empty($_SESSION['ERROR'])) {
                     if ($user->checkPwd($data["pass"])) $_SESSION["USER"] = $user;
-                    else $_SESSION['ERROR'] = "Invalid password";
+                    else $_SESSION['ERROR'][] = "Invalid password";
                 }
 
             } catch (UserNotFoundException) {
-                $_SESSION['ERROR'] = "User not found";
+                $_SESSION['ERROR'][] = "User not found";
             }
         }
 

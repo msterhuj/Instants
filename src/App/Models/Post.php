@@ -2,18 +2,24 @@
 
 namespace App\Models;
 
+use App\Exception\PostNotFoundException;
+use Core\ORM\Database;
 use Core\ORM\Model;
 
 class Post extends Model {
 
-    private int $id;
-    private User|int $author;
-    private string $content;
-    private int $createdAt;
-    private Post $replyTo;
+    private ?int $id = null;
+    private int|null|User $author = null;
+    private ?string $content = null;
+    private ?string $createdAt = null;
+    private ?Post $replyTo = null;
 
     /**
-     * @inheritDoc
+     * Implement parent method
+     */
+
+    /**
+     * @return array
      */
     protected function getData(): array {
         return [
@@ -26,17 +32,51 @@ class Post extends Model {
     }
 
     /**
-     * @return int
+     * @return string|null
      */
-    public function getId(): int {
-        return $this->id;
+    public function serialize(): ?string {
+        return serialize($this->getData());
     }
 
     /**
-     * @param int $id
+     * @throws PostNotFoundException
      */
-    public function setId(int $id): void {
-        $this->id = $id;
+    public function unserialize($data): Post {
+        if (!$data) throw new PostNotFoundException();
+        foreach ($data as $key => $value) {
+            $this->$key = $value;
+        }
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param string $value
+     * @return Post
+     * @throws PostNotFoundException
+     */
+    public static function loadBy(string $key, string $value): Post {
+        $con = Database::getPDO();
+        $prepare = $con->prepare("select * from post where $key = :values;");
+        $prepare->execute(["values" => $value]);
+        $post = new Post();
+        $post->unserialize($prepare->fetchObject());
+        return $post;
+    }
+
+    /**
+     * Object logic
+     */
+
+    /**
+     * Getter Setter
+     */
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int {
+        return $this->id;
     }
 
     /**
@@ -79,17 +119,13 @@ class Post extends Model {
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getCreatedAt(): int {
+    public function getCreatedAt(): string {
+        if (empty($this->createdAt)) {
+            $this->createdAt = date('Y-m-d H:i:s');
+        }
         return $this->createdAt;
-    }
-
-    /**
-     * @param int $createdAt
-     */
-    public function setCreatedAt(int $createdAt): void {
-        $this->createdAt = $createdAt;
     }
 
     /**
