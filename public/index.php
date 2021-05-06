@@ -9,6 +9,7 @@ unset($_SESSION['ERROR']);
 use Core\App;
 use App\Controller\HomeController;
 use App\Controller\AuthController;
+use App\Controller\AdminController;
 
 $app = App::getInstance();
 
@@ -33,9 +34,9 @@ $app->getRouter()
     ->get('/messages/:::', 'home', HomeController::class) // private with user
     ->get('/settings/', 'home', HomeController::class) // settings of user
     // admin zone
-    ->get('/admin/', 'home', HomeController::class) // General admin info
-    ->get('/admin/report', 'home', HomeController::class) // manage report
-    ->get('/admin/support', 'home', HomeController::class) // manage support ask
-    ->get('/admin/users', 'home', HomeController::class) // manage user
+    ->get('/admin/', 'admin', AdminController::class) // General admin info
+    ->get('/admin/report', 'admin_report', AdminController::class) // manage report
+    ->get('/admin/support', 'admin_support', AdminController::class) // manage support ask
+    ->get('/admin/users', 'admin_users', AdminController::class) // manage user
 ;
 $app->exec();

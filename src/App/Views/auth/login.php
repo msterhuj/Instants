@@ -1,6 +1,8 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="text-center">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div class="text-center">
             <div class="card bg-light shadow border-0" style="width: 20rem;">
                 <div class="card-body">
                     <h2>Instants</h2>
@@ -21,30 +23,16 @@
                     <?php } ?>
 
                     <form method="post" action="/login">
-
-                        <div class="form-group">
-                            <label for="username" class="control-label">Username</label>
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input class="form-control" id="username" name="username" type="text">
-                                </div>
-                            </div>
+                        <label for="username" class="control-label">Username</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input class="form-control" id="username" name="username" type="text">
                         </div>
-                        <div class="form-group">
-                            <label for="pass" class="control-label">Password</label>
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                    </div>
-                                    <input class="form-control" id="pass" name="pass" type="password">
-                                </div>
-                            </div>
+                        <label for="pass" class="control-label">Password</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input class="form-control" id="pass" name="pass" type="password">
                         </div>
-
                         <input name="csrf" value="{{ CSRF }}" hidden>
                         <button class="btn btn-primary" type="submit">Login</button>
                     </form>
@@ -52,5 +40,7 @@
                 </div>
             </div>
         </div>
+        </div>
+        <div class="col"></div>
     </div>
 </div>

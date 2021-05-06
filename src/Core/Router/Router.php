@@ -75,7 +75,7 @@ class Router {
             $route_url = "#^$route_url$#i";
             if (!preg_match($route_url, $request_url, $matches))
                 continue;
-            $route->setUrl($route_url);
+            $route->setUrlReg($route_url);
             if (sizeof($matches) > 1) {
                 array_shift($matches);
                 $route->setParam($matches[0]);

@@ -6,6 +6,7 @@ class Route {
 
     private string $method;
     private string $url;
+    private string $url_reg;
     private string $name;
     private string $param;
     private mixed $callback;
@@ -53,6 +54,22 @@ class Route {
     public function setUrl(string $url): Route {
         $this->url = $url;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlReg(): string
+    {
+        return $this->url_reg;
+    }
+
+    /**
+     * @param string $url_reg
+     */
+    public function setUrlReg(string $url_reg): void
+    {
+        $this->url_reg = $url_reg;
     }
 
     /**

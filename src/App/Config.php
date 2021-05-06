@@ -14,4 +14,7 @@ class Config {
     const MAIL_USER = "noreply@instants.dev";
     const MAIL_PASS = "";
     const MAIL_TIMEOUT = 30;
+
+    const REDIS_HOST = "redis";
+    const REDIS_PORT = 6379;
 }

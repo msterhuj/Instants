@@ -10,6 +10,7 @@ use DateTime;
 class User extends Model {
 
     private ?int $id = null;
+    private ?string $picture = null;
     private ?string $username = null;
     private ?string $description = null;
     private ?string $email = null;
@@ -30,6 +31,7 @@ class User extends Model {
     protected function getData(): array {
         return [
             "id" => $this->id,
+            "picture" => $this->picture,
             "username" => $this->username,
             "description" => $this->description,
             "email" => $this->email,
@@ -77,6 +79,12 @@ class User extends Model {
      * Object logic
      */
 
+    public function generateGravatarPicture() {
+        $this->picture = "https://www.gravatar.com/avatar/".
+            md5( strtolower( trim( $this->email ) ) ).
+            "?s=240&d=monsterid&r=g";
+    }
+    
     /**
      * @param string $role
      * @return User
@@ -119,6 +127,22 @@ class User extends Model {
      */
     public function getId(): int {
         return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPicture(): ?string {
+        return $this->picture;
+    }
+
+    /**
+     * @param string|null $picture
+     * @return User
+     */
+    public function setPicture(?string $picture): User {
+        $this->picture = $picture;
+        return $this;
     }
 
     /**

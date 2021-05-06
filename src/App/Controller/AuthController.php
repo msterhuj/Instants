@@ -70,6 +70,7 @@ class AuthController extends Controller {
                     $user = new User();
                     $user->setUsername($username);
                     $user->setEmail($email);
+                    $user->generateGravatarPicture();
                     $user->setPwd($pass);
                     $user->setDateOfBirth($dateOfBirth);
                     $user->setVreg(uniqid());
@@ -80,8 +81,8 @@ class AuthController extends Controller {
                         "TITLE" => "Instants - Activation Link",
                         "CODE" => $user->getVreg()
                     ]);
-                    if ($mail->send()) echo "check you mail";
-                    else echo "error when sending mail";
+                    //if ($mail->send()) echo "check you mail";
+                    //else echo "error when sending mail";
                     $this->redirectTo("home");
                 }
             }

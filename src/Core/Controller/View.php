@@ -5,8 +5,14 @@ namespace Core\Controller;
 abstract class View {
 
     private string $ROOT_DIR = "../src/App/Views";
+    private string $template = "base";
     private string $css = "";
     private string $js = "";
+
+    public function setTemplate(string $templateName): View {
+        $this->template = $templateName;
+        return $this;
+    }
 
     public function getTemplate(string $templateName): string {
         ob_start();
@@ -15,7 +21,7 @@ abstract class View {
     }
 
     public function render(string $page, array $data = []) {
-        $template = $this->getTemplate("base");
+        $template = $this->getTemplate($this->template);
 
         ob_start();
         include_once $this->ROOT_DIR . "/$page.php";
