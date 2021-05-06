@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col"></div>
-        <div class="col">
+        <div class="col-sm-12 col-lg-4"></div>
+        <div class="col-sm-12 col-lg-4">
             <div class="text-center">
-            <div class="card bg-light shadow border-0" style="width: 20rem;">
+            <div class="card bg-light shadow border-0">
                 <div class="card-body">
                     <h2>Instants</h2>
                     <h3>All now !</h3>
@@ -61,6 +61,6 @@
             </div>
         </div>
         </div>
-        <div class="col"></div>
+        <div class="col-sm-12 col-lg-4"></div>
     </div>
 </div>

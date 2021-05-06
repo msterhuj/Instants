@@ -29,6 +29,10 @@ abstract class Controller extends View {
         header('Location: ' . self::getUrl($routeName, $param));
     }
 
+    public static function isGest(): bool {
+        return !isset($_SESSION["USER"]);
+    }
+
     /**
      * @return bool
      */

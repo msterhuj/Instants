@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Exception\UserNotFoundException;
+use Core\Cache;
 use Core\ORM\Database;
 use Core\ORM\Model;
 use DateTime;
@@ -56,6 +57,7 @@ class User extends Model {
      */
     public function unserialize($data): User {
         if (!$data) throw new UserNotFoundException();
+        if (is_string($data)) $data = unserialize($data);
         foreach ($data as $key => $value) {
             if (is_array($this->$key)) $this->$key = unserialize($value);
             else $this->$key = $value;
@@ -68,10 +70,16 @@ class User extends Model {
      */
     public static function loadBy(string $key, string $value): User {
         $con = Database::getPDO();
-        $prepare = $con->prepare("select * from user where $key = :value;");
-        $prepare->execute(["value" => $value]);
+        $cache = Cache::get();
+        $result = $cache->get("USER_".$key."_".$value);
+        if (!$result) {
+            $prepare = $con->prepare("select * from user where $key = :value;");
+            $prepare->execute(["value" => $value]);
+            $result = $prepare->fetchObject();
+            $cache->set("USER_".$key."_".$value, $result, 300);
+        }
         $user = new User();
-        $user->unserialize($prepare->fetchObject());
+        $user->unserialize($result);
         return $user;
     }
 
@@ -116,6 +124,10 @@ class User extends Model {
      */
     public function checkPwd(string $pwd): bool {
         return password_verify($pwd, $this->pwd);
+    }
+
+    public static function getFromSession(): User {
+        return self::loadBy("id", $_SESSION["USER"]);
     }
 
     /**

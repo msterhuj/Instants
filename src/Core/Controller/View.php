@@ -45,7 +45,7 @@ abstract class View {
 
     public function appendJS(array $js): View {
         foreach ($js as $j) {
-            $this->css .= '<script src="/assets/js/'.$j.'.js"></script>';
+            $this->js .= '<script src="/assets/js/'.$j.'.js"></script>';
         }
         return $this;
     }

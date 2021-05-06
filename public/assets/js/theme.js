@@ -17,3 +17,10 @@ function switchTheme() {
 function currentTheme() {
     return getCookie("THEME");
 }
+
+function updateIconTheme() {
+    if (currentTheme() === "dark") document.getElementById("theme-icon").className = "bi-moon"
+    else document.getElementById("theme-icon").className = "bi-sun"
+}
+
+updateIconTheme()

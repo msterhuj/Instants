@@ -1,7 +1,6 @@
 <?php
 
 require '../includes/autoload.php';
-
 session_start();
 
 unset($_SESSION['ERROR']);

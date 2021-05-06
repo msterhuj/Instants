@@ -103,6 +103,7 @@ class AuthController extends Controller {
                 $user->addRoles("USER");
                 $user->update();
             }
+            $this->redirectTo("login");
         } catch (\TypeError $e) {
             echo $e;
             // account not found
@@ -120,7 +121,10 @@ class AuthController extends Controller {
                 if (!$user->emailValidated()) $_SESSION['ERROR'][] = "Email not verified";
 
                 if (empty($_SESSION['ERROR'])) {
-                    if ($user->checkPwd($data["pass"])) $_SESSION["USER"] = $user;
+                    if ($user->checkPwd($data["pass"])) {
+                        $_SESSION["USER"] = $user->getId();
+                        $this->redirectTo("home");
+                    }
                     else $_SESSION['ERROR'][] = "Invalid password";
                 }
 
