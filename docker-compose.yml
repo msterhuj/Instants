@@ -32,7 +32,6 @@ services:
     restart: always
     depends_on:
       - mariadb
-      - redis
     ports:
       - 80:80
     volumes:
