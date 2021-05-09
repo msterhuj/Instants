@@ -71,14 +71,9 @@ class User extends Model {
      */
     public static function loadBy(string $key, string $value): User {
         $con = Database::getPDO();
-        $cache = Cache::get();
-        $result = $cache->get("USER_".$key."_".$value);
-        if (!$result) {
-            $prepare = $con->prepare("select * from user where $key = :value;");
-            $prepare->execute(["value" => $value]);
-            $result = $prepare->fetchObject();
-            $cache->set("USER_".$key."_".$value, $result, 300);
-        }
+        $prepare = $con->prepare("select * from user where $key = :value;");
+        $prepare->execute(["value" => $value]);
+        $result = $prepare->fetchObject();
         $user = new User();
         $user->unserialize($result);
         return $user;
