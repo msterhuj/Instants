@@ -34,7 +34,7 @@ use App\Models\User;
 
                     <a onclick="switchTheme()"><i id="theme-icon" class=""></i></a>
 
-                    <?php if (Controller::isGest()) { ?>
+                    <?php if (Controller::isGuest()) { ?>
                         <!-- Is not logged -->
                         <a class="btn btn-outline-info" href="<?php echo Controller::getUrl("login") ?>">Login</a>
                         <a class="btn btn-info" href="<?php echo Controller::getUrl("signup") ?>">Signup</a>
@@ -49,6 +49,10 @@ use App\Models\User;
                             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <?php if ($user->hasRole("ADMIN")) { ?>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="<?php echo Controller::getUrl("admin") ?>">Admin</a></li>
+                                <?php } ?>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="<?php echo Controller::getUrl("logout") ?>">Sign out</a></li>
                             </ul>

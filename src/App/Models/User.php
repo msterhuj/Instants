@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Exception\UserNotFoundException;
 use Core\Cache;
+use Core\Debug;
 use Core\ORM\Database;
 use Core\ORM\Model;
 use DateTime;
@@ -83,6 +84,17 @@ class User extends Model {
         return $user;
     }
 
+    public static function getAll() {
+        $con = Database::getPDO();
+        $prepare = $con->prepare("select id from user");
+        $prepare->execute();
+        $users = [];
+        foreach ($prepare->fetchAll(\PDO::FETCH_ASSOC) as $value) {
+            $users[] = self::loadBy("id", $value['id']);
+        }
+        return $users;
+    }
+
     /**
      * Object logic
      */
@@ -114,7 +126,11 @@ class User extends Model {
         return $this;
     }
 
-    public function emailValidated() {
+    public function hasRole(string $role): bool {
+        return in_array($role, $this->role);
+    }
+
+    public function emailValidated(): bool {
         return empty($this->vreg);
     }
 

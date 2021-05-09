@@ -12,6 +12,9 @@ use Core\Router\Route;
 class AuthController extends Controller {
 
     public function signup() {
+
+        if (!self::isGuest()) $this->redirectTo("home");
+
         if ($this->isPost()) {
 
             if(count($_POST) == 6
@@ -81,9 +84,8 @@ class AuthController extends Controller {
                         "TITLE" => "Instants - Activation Link",
                         "CODE" => $user->getVreg()
                     ]);
-                    //if ($mail->send()) echo "check you mail";
-                    //else echo "error when sending mail";
-                    $this->redirectTo("home");
+                    if ($mail->send()) echo "check you mail";
+                    else echo "error when sending mail";
                 }
             }
         } else {
@@ -95,6 +97,7 @@ class AuthController extends Controller {
     }
 
     public function activate() {
+        if (!self::isGuest()) $this->redirectTo("home");
         try {
             // update account
             $user = User::loadBy("vreg", Route::getRouteParam());
@@ -112,6 +115,9 @@ class AuthController extends Controller {
     }
 
     public function login() {
+
+        if (!self::isGuest()) $this->redirectTo("home");
+
         if ($this->isPost()){
             $data = $this->getBody();
             try {
