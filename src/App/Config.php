@@ -12,6 +12,6 @@ class Config {
     const MAIL_SRV = "mail.instants.dev";
     const MAIL_PORT = 587;
     const MAIL_USER = "noreply@instants.dev";
-    const MAIL_PASS = "";
+    const MAIL_PASS = "76&cocivero";
     const MAIL_TIMEOUT = 30;
 }

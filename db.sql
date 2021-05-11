@@ -1,9 +1,12 @@
+DROP DATABASE IF EXISTS `instants`;
 CREATE DATABASE IF NOT EXISTS `instants`;
 USE `instants`;
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user`
 (
     `id`          int(11)      NOT NULL AUTO_INCREMENT,
+    `picture`     varchar(255) NOT NULL,
     `username`    varchar(30)  NOT NULL,
     `description` varchar(255)          DEFAULT NULL,
     `email`       varchar(255) NOT NULL,
@@ -18,9 +21,9 @@ CREATE TABLE IF NOT EXISTS `user`
     UNIQUE KEY `email` (`email`),
     UNIQUE KEY `vreg` (`vreg`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 10
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `post`;
 CREATE TABLE IF NOT EXISTS `post`
 (
     `id`        int(11)      NOT NULL AUTO_INCREMENT,
@@ -34,9 +37,9 @@ CREATE TABLE IF NOT EXISTS `post`
     CONSTRAINT `FK_post_post` FOREIGN KEY (`replyTo`) REFERENCES `post` (`id`),
     CONSTRAINT `FK_post_user` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 3
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `follow`;
 CREATE TABLE IF NOT EXISTS `follow`
 (
     `follower` int(11) NOT NULL,
@@ -48,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `follow`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `like`;
 CREATE TABLE IF NOT EXISTS `like`
 (
     `post`      int(11)   NOT NULL,
@@ -60,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `like`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages`
 (
     `id`        int(11)      NOT NULL,
@@ -75,6 +80,7 @@ CREATE TABLE IF NOT EXISTS `messages`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `report`;
 CREATE TABLE IF NOT EXISTS `report`
 (
     `id`        int(11)      NOT NULL AUTO_INCREMENT,
@@ -89,5 +95,3 @@ CREATE TABLE IF NOT EXISTS `report`
     CONSTRAINT `FK_report_user` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
-
-

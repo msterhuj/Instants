@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use App\Exception\UserNotFoundException;
-use Core\Cache;
-use Core\Debug;
 use Core\ORM\Database;
 use Core\ORM\Model;
 use DateTime;
@@ -71,10 +69,10 @@ class User extends Model {
      */
     public static function loadBy(string $key, string $value): User {
         $con = Database::getPDO();
-        $prepare = $con->prepare("select * from user where $key = :value;");
+        $user = new User();
+        $prepare = $con->prepare("select * from " . $user->getTableName() . " where $key = :value;");
         $prepare->execute(["value" => $value]);
         $result = $prepare->fetchObject();
-        $user = new User();
         $user->unserialize($result);
         return $user;
     }
