@@ -42,7 +42,10 @@ use App\Models\User;
                 </div>
 
                 <!-- Scroll infinitely -->
-                <div class="posts col-sm-6">{{ SYSTEM_CONTENT }}</div>
+                <div class="posts col-sm-6">
+                    <div class="posts-list">{{ SYSTEM_CONTENT }}</div>
+                    <!-- Add a spin icon here -->
+                </div>
 
                 <!-- Profile -->
                 <div class="profile col-sm-3">

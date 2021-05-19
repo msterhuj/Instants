@@ -89,7 +89,9 @@ class AuthController extends Controller {
                 }
             }
         } else {
-            $this->appendCSS(["auth"])->render("auth/signup", [
+            $this->setTemplate("auth")
+                ->appendCSS(["auth"])
+                ->render("auth/signup", [
                 "TITLE" => "Signup",
                 "CSRF" => $this->generateCSRF()
             ]);
@@ -139,7 +141,9 @@ class AuthController extends Controller {
             }
         }
 
-        $this->appendCSS(["auth"])->render("auth/login", [
+        $this->setTemplate("auth")
+            ->appendCSS(["auth"])
+            ->render("auth/login", [
             "TITLE" => "Login",
             "CSRF" => $this->generateCSRF()
         ]);
