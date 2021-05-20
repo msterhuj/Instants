@@ -1,11 +1,15 @@
 <?php
 
-
 namespace App\Controller;
 
+use Core\Controller\Controller;
+use Core\Debug;
 
-class PostApiController extends \Core\Controller\Controller {
+class PostApiController extends Controller {
 
-    public function post() {}
+    public function post() {
+        // todo
+        Debug::dump($this->getBody());
+    }
 
 }
