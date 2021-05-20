@@ -45,16 +45,18 @@ class User extends Model {
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function serialize(): ?string {
+    public function serialize(): string {
         return serialize($this->getData());
     }
 
     /**
+     * @param $data
+     * @return self
      * @throws UserNotFoundException
      */
-    public function unserialize($data): User {
+    public function unserialize($data): self {
         if (!$data) throw new UserNotFoundException();
         if (is_string($data)) $data = unserialize($data);
         foreach ($data as $key => $value) {
@@ -65,9 +67,12 @@ class User extends Model {
     }
 
     /**
+     * @param string $key
+     * @param string $value
+     * @return self
      * @throws UserNotFoundException
      */
-    public static function loadBy(string $key, string $value): User {
+    public static function loadBy(string $key, string $value): self {
         $con = Database::getPDO();
         $user = new User();
         $prepare = $con->prepare("select * from " . $user->getTableName() . " where $key = :value;");
@@ -96,13 +101,14 @@ class User extends Model {
         $this->picture = "https://www.gravatar.com/avatar/".
             md5( strtolower( trim( $this->email ) ) ).
             "?s=240&d=monsterid&r=g";
+        return $this;
     }
     
     /**
      * @param string $role
-     * @return User
+     * @return self
      */
-    public function addRoles(string $role): User {
+    public function addRoles(string $role): self {
         if (!in_array($role, $this->role))
             $this->role[] = $role;
         return $this;
@@ -110,9 +116,9 @@ class User extends Model {
 
     /**
      * @param string $role
-     * @return User
+     * @return self
      */
-    public function delRoles(string $role): User {
+    public function delRoles(string $role): self {
         if (($key = array_search($role, $this->role)) !== false)
             unset($this->role[$key]);
 
@@ -135,6 +141,9 @@ class User extends Model {
         return password_verify($pwd, $this->pwd);
     }
 
+    /**
+     * @throws UserNotFoundException
+     */
     public static function getFromSession(): User {
         return self::loadBy("id", $_SESSION["USER"]);
     }
@@ -151,17 +160,17 @@ class User extends Model {
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPicture(): ?string {
+    public function getPicture(): string {
         return $this->picture;
     }
 
     /**
      * @param string|null $picture
-     * @return User
+     * @return self
      */
-    public function setPicture(?string $picture): User {
+    public function setPicture(?string $picture): self {
         $this->picture = $picture;
         return $this;
     }
@@ -175,9 +184,11 @@ class User extends Model {
 
     /**
      * @param string $username
+     * @return self
      */
-    public function setUsername(string $username) {
+    public function setUsername(string $username): self {
         $this->username = $username;
+        return $this;
     }
 
     /**
@@ -189,9 +200,9 @@ class User extends Model {
 
     /**
      * @param string $description
-     * @return User
+     * @return self
      */
-    public function setDescription(string $description): User {
+    public function setDescription(string $description): self {
         $this->description = $description;
         return $this;
     }
@@ -205,9 +216,9 @@ class User extends Model {
 
     /**
      * @param string $email
-     * @return User
+     * @return self
      */
-    public function setEmail(string $email): User {
+    public function setEmail(string $email): self {
         $this->email = $email;
         return $this;
     }
@@ -221,9 +232,9 @@ class User extends Model {
 
     /**
      * @param string $pwd
-     * @return User
+     * @return self
      */
-    public function setPwd(string $pwd): User {
+    public function setPwd(string $pwd): self {
         $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
         return $this;
     }
@@ -244,17 +255,17 @@ class User extends Model {
 
     /**
      * @param string|null $vreg
-     * @return User
+     * @return self
      */
-    public function setVreg(string $vreg = null): User {
+    public function setVreg(string $vreg = null): self {
         $this->vreg = $vreg;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getCreatedAt(): ?string {
+    public function getCreatedAt(): string {
         if (empty($this->createdAt)) {
             $this->createdAt = date('Y-m-d H:i:s');
         }
@@ -262,9 +273,9 @@ class User extends Model {
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getUpdatedAt(): ?string {
+    public function getUpdatedAt(): string {
         $this->updatedAt = date('Y-m-d H:i:s');
         return $this->updatedAt;
     }
@@ -278,8 +289,10 @@ class User extends Model {
 
     /**
      * @param string|null $dateOfBirth
+     * @return User
      */
-    public function setDateOfBirth(?string $dateOfBirth): void {
+    public function setDateOfBirth(?string $dateOfBirth): self {
         $this->dateOfBirth = $dateOfBirth;
+        return $this;
     }
 }

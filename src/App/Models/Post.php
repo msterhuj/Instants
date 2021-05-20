@@ -12,7 +12,15 @@ class Post extends Model {
     private int|null|User $author = null;
     private ?string $content = null;
     private ?string $createdAt = null;
-    private ?Post $replyTo = null;
+    private int|null|Post $replyTo = null;
+
+    /**
+     * Post constructor.
+     */
+    public function __construct() {
+        $this->author = User::getFromSession();
+    }
+
 
     /**
      * Implement parent method
@@ -92,16 +100,7 @@ class Post extends Model {
      * @return User
      */
     public function getAuthor(): User {
-        if ($this->author instanceof  User) return $this->author;
-        // else todo get user objet set it and return user
-    }
-
-    /**
-     * @param int $author
-     */
-    public function setAuthor(int $author): void {
-        $this->author = $author;
-        // todo set author objet by author id
+        return $this->author;
     }
 
     /**
@@ -113,9 +112,11 @@ class Post extends Model {
 
     /**
      * @param string $content
+     * @return self
      */
-    public function setContent(string $content): void {
+    public function setContent(string $content): self {
         $this->content = $content;
+        return $this;
     }
 
     /**
@@ -129,24 +130,29 @@ class Post extends Model {
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getReplyToId(): int {
-        // todo make retunr id by reply to post
-        return 0;
-    }
-
-    /**
-     * @return Post
-     */
-    public function getReplyTo(): Post {
+    public function getReplyToId(): ?int {
+        if ($this->replyTo instanceof Post) return $this->replyTo->getId();
         return $this->replyTo;
     }
 
     /**
-     * @param Post $replyTo
+     * Get parent post
+     * @return Post
+     * @throws PostNotFoundException
      */
-    public function setReplyTo(Post $replyTo): void {
+    public function getReplyTo(): Post {
+        if ($this->replyTo instanceof Post) return $this->replyTo;
+        return self::loadBy("id", $this->replyTo);
+    }
+
+    /**
+     * @param Post $replyTo
+     * @return Post
+     */
+    public function setReplyTo(Post $replyTo): self {
         $this->replyTo = $replyTo;
+        return $this;
     }
 }

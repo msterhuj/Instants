@@ -4,25 +4,12 @@ namespace Core\ORM;
 
 abstract class Model extends Database {
 
-    private null|string $tablePrefix;
-    private string $tableName;
-
-    /**
-     * Model constructor.
-     */
-    public function __construct(string $tabPrefix = null, string $tableName = null) {
-        $this->tablePrefix = $tabPrefix;
-        if (empty($tableName)) {
-            $class = explode('\\', get_called_class());
-            $this->tableName = $class[sizeof($class) - 1];
-        } else $this->tableName = $tableName;
-    }
-
     /**
      * @return string
      */
     public function getTableName(): string {
-        return strtolower($this->tablePrefix . $this->tableName);
+        $class = explode('\\', get_called_class());
+        return strtolower($class[sizeof($class) - 1]);
     }
 
     public function save() {

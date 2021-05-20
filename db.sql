@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `user`
     `description` varchar(255)          DEFAULT NULL,
     `email`       varchar(255) NOT NULL,
     `pwd`         varchar(60)  NOT NULL,
-    `role`        varchar(255) NOT NULL DEFAULT '[]',
+    `role`        varchar(255) NOT NULL DEFAULT 'a:1:{}',
     `vreg`        varchar(13)           DEFAULT NULL,
     `createdAt`   datetime     NOT NULL,
     `updatedAt`   datetime     NOT NULL,
