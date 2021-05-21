@@ -43,8 +43,22 @@ use App\Models\User;
 
                 <!-- Scroll infinitely -->
                 <div class="posts col-sm-6">
-                    <div class="posts-list">{{ SYSTEM_CONTENT }}</div>
-                    <!-- Add a spin icon here -->
+                    <?php if (!Controller::isGuest()) { ?>
+                        <div class="new-post">
+                            <div class="card">
+                                <div class="input-group mb-3">
+                                    <textarea id="post-data" class="form-control" aria-label="With textarea"></textarea>
+                                    <button class="btn btn-outline-secondary" onclick="newPost()">
+                                        <i class="far fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <div id="post" class="posts-list">{{ SYSTEM_CONTENT }}</div>
+                    <button class="btn btn-primary" onclick="getNextPost()">
+                        <i class="fas fa-search"></i>Actualiser
+                    </button>
                 </div>
 
                 <!-- Profile -->
