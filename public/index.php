@@ -32,6 +32,8 @@ $app->getRouter()
     // post api
     ->get('/api/post', 'post', PostApiController::class)
     ->post('/api/post', 'post', PostApiController::class)
+    ->get('/api/like/:::', 'like', PostApiController::class)
+    ->get('/api/followee/:::', 'followee', UserController::class)
     // user zone
     ->get('/logout', 'logout', AuthController::class) // logout user
     ->get('/report/', 'home', HomeController::class) // report a post

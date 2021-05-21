@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Exception\PostNotFoundException;
 use Core\ORM\Database;
 use Core\ORM\Model;
+use Core\Router\Route;
 
 class Post extends Model {
 
@@ -75,6 +76,36 @@ class Post extends Model {
     /**
      * Object logic
      */
+
+    private function isLiked() {
+        $con = Database::getPDO();
+        $prepare = $con->prepare("select * from `like` where post = :post and user = :user");
+        $prepare->execute([
+            "user" => intval($_SESSION["USER"]),
+            "post" => intval(Route::getRouteParam())
+        ]);
+        return !empty($prepare->fetchObject());
+    }
+
+    /**
+     * @return bool
+     */
+    public function like(): bool {
+        $con = Database::getPDO();
+        $liked = $this->isLiked();
+        if ($liked) {
+            // remove like
+            $prepare = $con->prepare("delete from `like` where post = :post and user = :user");
+        } else {
+            // add like
+            $prepare = $con->prepare("insert into `like` (post, user) value (:post, :user)");
+        }
+        $prepare->execute([
+            "user" => intval($_SESSION["USER"]),
+            "post" => intval(Route::getRouteParam())
+        ]);
+        return $liked;
+    }
 
     /**
      * Getter Setter

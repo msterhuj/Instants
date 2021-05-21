@@ -16,3 +16,18 @@ function newPost() {
     }
     xhr.send("content=" + document.querySelector("#post-data").value);
 }
+
+function like(postId) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/like/' + postId, true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status === 200) {
+                alert(this.responseText)
+            } else {
+                alert("Error for like")
+            }
+        }
+    }
+    xhr.send();
+}

@@ -148,6 +148,12 @@ class User extends Model {
         return self::loadBy("id", $_SESSION["USER"]);
     }
 
+    public function isFollow() {}
+
+    public function followee() {
+
+    }
+
     /**
      * Getter Setter
      */

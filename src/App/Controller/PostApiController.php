@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Models\Post;
 use Core\Controller\Controller;
 use Core\Debug;
+use Core\Router\Route;
 
 class PostApiController extends Controller {
 
@@ -20,6 +21,8 @@ class PostApiController extends Controller {
         }
     }
 
-    public function like() {}
-
+    public function like() {
+        $post = Post::loadBy("id", Route::getRouteParam());
+        $post->like();
+    }
 }
