@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Exception\UserNotFoundException;
 use Core\ORM\Database;
 use Core\ORM\Model;
+use Core\Router\Route;
 use DateTime;
 
 class User extends Model {
@@ -148,10 +149,29 @@ class User extends Model {
         return self::loadBy("id", $_SESSION["USER"]);
     }
 
-    public function isFollow() {}
+    public function isFollowee() {
+        $con = Database::getPDO();
+        $prepare = $con->prepare("select * from `follow` where follower = :follower and followee = :followee");
+        $prepare->execute([
+            "follower" => intval($_SESSION["USER"]),
+            "followee" => intval(Route::getRouteParam())
+        ]);
+        return !empty($prepare->fetchObject());
+    }
 
-    public function followee() {
-
+    public function follow() {
+        $con = Database::getPDO();
+        $followed = $this->isFollowee();
+        if ($followed) {
+            $prepare = $con->prepare("delete from `follow` where follower = :follower and followee = :followee");
+        } else {
+            $prepare = $con->prepare("insert into `follow` (follower, followee) value (:follower, :followee)");
+        }
+        $prepare->execute([
+            "follower" => intval($_SESSION["USER"]),
+            "followee" => intval(Route::getRouteParam())
+        ]);
+        return $followed;
     }
 
     /**

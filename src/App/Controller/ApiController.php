@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Models\Post;
+use App\Models\User;
 use Core\Controller\Controller;
-use Core\Debug;
 use Core\Router\Route;
 
-class PostApiController extends Controller {
+class ApiController extends Controller {
 
     public function post() {
         if ($this->isPost()) {
@@ -21,8 +21,23 @@ class PostApiController extends Controller {
         }
     }
 
+    public function isLike() {
+        $post = Post::loadBy("id", Route::getRouteParam());
+        echo $post->isLiked();
+    }
+
     public function like() {
         $post = Post::loadBy("id", Route::getRouteParam());
         $post->like();
+    }
+
+    public function isFollowee() {
+        $user = User::loadBy("id", Route::getRouteParam());
+        echo $user->isFollowee();
+    }
+
+    public function followee() {
+        $user = User::loadBy("id", Route::getRouteParam());
+        $user->follow();
     }
 }

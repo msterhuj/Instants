@@ -9,7 +9,7 @@ use Core\App;
 use App\Controller\HomeController;
 use App\Controller\AuthController;
 use App\Controller\AdminController;
-use App\Controller\PostApiController;
+use App\Controller\ApiController;
 use App\Controller\UserController;
 
 $app = App::getInstance();
@@ -29,11 +29,13 @@ $app->getRouter()
     ->get('/admin/', 'admin', AdminController::class) // General admin info
     ->get('/admin/report', 'admin_report', AdminController::class) // manage report
     ->get('/admin/users', 'admin_users', AdminController::class) // manage user
-    // post api
-    ->get('/api/post', 'post', PostApiController::class)
-    ->post('/api/post', 'post', PostApiController::class)
-    ->get('/api/like/:::', 'like', PostApiController::class)
-    ->get('/api/followee/:::', 'followee', UserController::class)
+    // api
+    ->get('/api/post', 'post', ApiController::class)
+    ->post('/api/post', 'post', ApiController::class)
+    ->get('/api/like/:::', 'like', ApiController::class)
+    ->get('/api/like/:::/check', 'isLike', ApiController::class)
+    ->get('/api/followee/:::', 'followee', ApiController::class)
+    ->get('/api/followee/:::/check', 'isFollowee', ApiController::class)
     // user zone
     ->get('/logout', 'logout', AuthController::class) // logout user
     ->get('/report/', 'home', HomeController::class) // report a post
@@ -41,6 +43,6 @@ $app->getRouter()
     ->get('/messages/', 'home', HomeController::class) // all private message
     ->get('/messages/:::', 'home', HomeController::class) // private with user
     ->get('/settings/', 'home', HomeController::class) // settings of user
-    ->get('/:::', 'user', UserController::class)
+    ->get('/p/:::', 'user', UserController::class)
 ;
 $app->exec();

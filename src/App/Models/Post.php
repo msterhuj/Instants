@@ -77,7 +77,7 @@ class Post extends Model {
      * Object logic
      */
 
-    private function isLiked() {
+    public function isLiked() {
         $con = Database::getPDO();
         $prepare = $con->prepare("select * from `like` where post = :post and user = :user");
         $prepare->execute([
