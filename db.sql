@@ -39,6 +39,20 @@ CREATE TABLE IF NOT EXISTS `post`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `stats`;
+CREATE TABLE IF NOT EXISTS `stats`
+(
+    `id`        int(11)     NOT NULL AUTO_INCREMENT,
+    `ip`        varchar(64) NOT NULL,
+    `user`      int(11),
+    `url`       varchar(255),
+    `createdAt` timestamp    NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    PRIMARY KEY (`id`),
+    KEY `FK_stats_user` (`user`),
+    CONSTRAINT `FK_stats_user` FOREIGN KEY (`user`) REFERENCES `user` (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHAR SET = utf8;
+
 DROP TABLE IF EXISTS `follow`;
 CREATE TABLE IF NOT EXISTS `follow`
 (

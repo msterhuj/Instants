@@ -33,6 +33,8 @@ class App {
 
             $_SESSION["ROUTE"] = $route;
 
+            Stats::insertRequest();
+
             $controller->$func();
         } catch (RouterException $e) {
             echo "Route non trouvée";
