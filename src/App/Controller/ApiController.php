@@ -37,7 +37,7 @@ class ApiController extends Controller {
     }
 
     public function followee() {
-        $user = User::loadBy("id", Route::getRouteParam());
+        $user = User::getFromSession();
         $user->follow();
     }
 }
