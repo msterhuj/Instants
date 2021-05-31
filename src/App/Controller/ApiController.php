@@ -5,9 +5,30 @@ namespace App\Controller;
 use App\Models\Post;
 use App\Models\User;
 use Core\Controller\Controller;
+use Core\ORM\Database;
 use Core\Router\Route;
 
 class ApiController extends Controller {
+
+    public function nextPost() {
+        if ($this->isGet()) {
+            $offset = intval(Route::getRouteParam());
+            $con = Database::getPDO();
+            $prepare = $con->prepare("select * from post where replyTo is null order by createdAt desc limit 5 offset $offset");
+            $prepare->execute();
+            $content = "";
+            $data = $prepare->fetchAll(\PDO::FETCH_ASSOC);
+            foreach ($data as $key => $post) {
+                $user = User::loadBy("id", $post["author"]);
+                $content .= $this->render("post/post", [
+                    "AUTHOR" => $user->getUsername(),
+                    "PICTURE" => $user->getPicture(),
+                    "CONTENT" => $post["content"]
+                ], false, true);
+            }
+            echo $content;
+        }
+    }
 
     public function post() {
         if (Controller::isGuest()) return;
@@ -23,7 +44,6 @@ class ApiController extends Controller {
     }
 
     public function isLike() {
-        if (Controller::isGuest()) return;
         $post = Post::loadBy("id", Route::getRouteParam());
         echo $post->isLiked();
     }
@@ -35,7 +55,6 @@ class ApiController extends Controller {
     }
 
     public function isFollowee() {
-        if (Controller::isGuest()) return;
         $user = User::loadBy("id", Route::getRouteParam());
         echo $user->isFollowee();
     }

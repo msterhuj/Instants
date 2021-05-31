@@ -20,11 +20,10 @@ abstract class View {
         return ob_get_clean();
     }
 
-    public function render(string $page, array $data = []) {
-        $template = $this->getTemplate($this->template);
-
+    public function render(string $page, array $data = [], bool $printResult = true, bool $disableTemplate = false) {
+        $template = ($disableTemplate)? '{{ SYSTEM_CONTENT }}' : $this->getTemplate($this->template);
         ob_start();
-        include_once $this->ROOT_DIR . "/$page.php";
+        include $this->ROOT_DIR . "/$page.php";
         $content = str_replace("{{ SYSTEM_CONTENT }}", ob_get_clean(), $template);
         $content = str_replace("{{ CSS }}", $this->css, $content);
         $content = str_replace("{{ JS }}", $this->js, $content);
@@ -32,8 +31,8 @@ abstract class View {
         foreach ($data as $key => $value) {
             $content = str_replace("{{ " . $key . " }}", $value, $content);
         }
-
-        echo $content;
+        if ($printResult) echo $content;
+        else return $content;
     }
 
     public function appendCSS(array $css): View {

@@ -3,7 +3,6 @@
 namespace Core\ORM;
 
 use App\Config;
-use Core\Debug;
 use PDO;
 use Serializable;
 
@@ -40,7 +39,6 @@ abstract class Database implements Serializable {
     protected function toInsert(string $table): string {
         $columns = "";
         $values = "";
-        Debug::print($this->getData());
         foreach ($this->getData() as $key => $value) {
             if (!empty($value)) {
                 $columns .= $key . ",";

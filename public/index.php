@@ -24,13 +24,12 @@ $app->getRouter()
     ->post('/login', 'login', AuthController::class) // login action
     ->get('/activate/:::', 'activate', AuthController::class) // use code for validate account
     ->get('/post/:::', 'home', HomeController::class) // show post
-    ->get('/profile/:::', 'home', HomeController::class) // show profile of user
     // admin zone
     ->get('/admin/', 'admin', AdminController::class) // General admin info
     ->get('/admin/report', 'admin_report', AdminController::class) // manage report
     ->get('/admin/users', 'admin_users', AdminController::class) // manage user
     // api
-    ->get('/api/post', 'post', ApiController::class)
+    ->get('/api/post/:::', 'nextPost', ApiController::class)
     ->post('/api/post', 'post', ApiController::class)
     ->get('/api/like/:::', 'like', ApiController::class)
     ->get('/api/like/:::/check', 'isLike', ApiController::class)
@@ -43,6 +42,6 @@ $app->getRouter()
     ->get('/messages/', 'home', HomeController::class) // all private message
     ->get('/messages/:::', 'home', HomeController::class) // private with user
     ->get('/settings/', 'home', HomeController::class) // settings of user
-    ->get('/p/:::', 'user', UserController::class)
+    ->get('/p/:::', 'profile', UserController::class)
 ;
 $app->exec();

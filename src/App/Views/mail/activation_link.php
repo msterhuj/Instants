@@ -9,6 +9,6 @@
     <script async src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
     <body>
-        <a href="http://127.0.0.1:8000/activate/{{ CODE }}">Activate</a>
+        <a href="http://<?php echo $_SERVER["SERVER_NAME"] ?>/activate/{{ CODE }}">Activate</a>
     </body>
 </html>
