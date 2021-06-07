@@ -11,7 +11,9 @@
         <div class="col-xs-6 col-md-3"></div>
     </div>
     <div class="row graf">
-        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <canvas id="testCanvas" width="550" height="450" ></canvas>
+        </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4"></div>
     </div>

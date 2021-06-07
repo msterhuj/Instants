@@ -11,7 +11,7 @@ class AdminController extends Controller {
         $user = User::getFromSession();
         if (!$user->hasRole("ADMIN")) $this->redirectTo("home");
 
-        $this->setTemplate("admin")->render("admin/home", [
+        $this->setTemplate("admin")->appendJS(["graf"])->render("admin/home", [
             "TITLE" => "Admin"
         ]);
     }

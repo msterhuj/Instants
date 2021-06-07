@@ -9,10 +9,11 @@
         <title>{{ TITLE }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <?php if (isset($_COOKIE['THEME']) && $_COOKIE['THEME'] == "dark")
-            echo '<link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">';
+            echo '<link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">';
         else
-            echo '<link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">';
+            echo '<link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">';
         ?>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         {{ CSS }}
     </head>
@@ -41,8 +42,7 @@
 
         {{ SYSTEM_CONTENT }}
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
         {{ JS }}
     </body>
 </html>

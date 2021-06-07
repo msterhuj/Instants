@@ -16,7 +16,7 @@
                     <tr>
                         <td>
                             <img src="<?php echo $user->getPicture() ?>" alt="mdo" width="32" height="32" class="rounded-circle">
-                            <a href="<?php echo Controller::getUrl("user", $user->getUsername()) ?>"><?php echo $user->getUsername() ?></a>
+                            <a href="<?php echo Controller::getUrl("profile", $user->getUsername()) ?>"><?php echo $user->getUsername() ?></a>
                         </td>
                         <td><?php echo $user->getEmail() ?></td>
                         <td>
