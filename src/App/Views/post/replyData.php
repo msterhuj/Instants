@@ -1,0 +1,1 @@
+<p>{{ AUTHOR }} {{ CONTENT }}</p>

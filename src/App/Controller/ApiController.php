@@ -21,12 +21,27 @@ class ApiController extends Controller {
             $prepare->execute();
             $content = "";
             $data = $prepare->fetchAll(\PDO::FETCH_ASSOC);
-            foreach ($data as $key => $post) {
+            foreach ($data as $post) {
+                $replys = "";
+                $prepare = $con->prepare("select * from post where replyTo = :id");
+                $prepare->execute([
+                    "id" => $post["id"]
+                ]);
+                $replyData = $prepare->fetchAll(\PDO::FETCH_ASSOC);
+                foreach ($replyData as $reply) {
+                    $replys .= $this->render("post/replyData", [
+                        "CONTENT" => $reply["content"],
+                        "AUTHOR" => User::loadBy("id", $reply["author"])->getUsername()
+                    ], false, true);
+                }
+
                 $user = User::loadBy("id", $post["author"]);
                 $content .= $this->render("post/post", [
                     "AUTHOR" => $user->getUsername(),
                     "PICTURE" => $user->getPicture(),
-                    "CONTENT" => $post["content"]
+                    "CONTENT" => $post["content"],
+                    "ID" => $post["id"],
+                    "REPLY" => $replys
                 ], false, true);
             }
             echo $content;
@@ -42,8 +57,9 @@ class ApiController extends Controller {
             $data = $this->getBody();
             if (!empty($data['content'])) {
                 $post = new Post();
+                Debug::print($data);
                 $post->setContent($data['content']);
-                if (!empty($data['reply'])) $post->setReplyTo(Post::loadBy('id', $data['reply']));
+                if (isset($data['reply'])) $post->setReplyTo(Post::loadBy('id', $data['reply']));
                 $post->save();
             }
         }
