@@ -30,10 +30,13 @@
                             ?>
                         </td>
                         <td>
-                            <form method="post" action="<?php echo $user->getId(); ?>">
-                                <input type="text" name="csrf" value="{{ CSRF }}" hidden>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <a class="btn btn-primary">Change Pass</a>
+                            <?php if (!in_array('BANNED', $user->getRoles())): ?>
+                                <a class="btn btn-primary" href="<?php echo Controller::getUrl("admin_user_ban", $user->getId()) ?>">Ban</a>
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?php echo Controller::getUrl("admin_user_ban", $user->getId()) ?>">UnBan</a>
+                            <?php endif ?>
+                            <a class="btn btn-primary" href="<?php echo Controller::getUrl("admin_user_delete", $user->getId()) ?>">Delete</a>
                         </td>
                     </tr>
                 <?php } ?>

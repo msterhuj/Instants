@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Exception\PostNotFoundException;
 use App\Models\Post;
 use App\Models\User;
 use Core\Controller\Controller;
+use Core\Debug;
 use Core\ORM\Database;
 use Core\Router\Route;
+use PDO;
 
 class ApiController extends Controller {
 
@@ -30,6 +33,9 @@ class ApiController extends Controller {
         }
     }
 
+    /**
+     * @throws PostNotFoundException
+     */
     public function post() {
         if (Controller::isGuest()) return;
         if ($this->isPost()) {
@@ -63,5 +69,21 @@ class ApiController extends Controller {
         if (Controller::isGuest()) return;
         $user = User::getFromSession();
         $user->follow();
+    }
+
+    public function search() {
+        $data = $this->getBody();
+
+        $con = Database::getPDO();
+
+        $prepare = "";
+        if ($data["type"] == "user") $prepare = $con->prepare("select * from user where username like :data");
+        else $prepare = $con->prepare("select * from post where content like :data;");
+
+        $prepare->execute([
+            "data" => '%' . $data["data"] . '%'
+        ]);
+
+        echo json_encode($prepare->fetchAll(PDO::FETCH_ASSOC));
     }
 }

@@ -28,6 +28,8 @@ $app->getRouter()
     ->get('/admin/', 'admin', AdminController::class) // General admin info
     ->get('/admin/report', 'admin_report', AdminController::class) // manage report
     ->get('/admin/users', 'admin_users', AdminController::class) // manage user
+    ->get('/admin/user/:::/ban', 'admin_user_ban', AdminController::class) // ban or unban user by id
+    ->get('/admin/user/:::/delete', 'admin_user_delete', AdminController::class) // delete user by id
     // api
     ->get('/api/post/:::', 'nextPost', ApiController::class)
     ->post('/api/post', 'post', ApiController::class)
@@ -35,6 +37,7 @@ $app->getRouter()
     ->get('/api/like/:::/check', 'isLike', ApiController::class)
     ->get('/api/followee/:::', 'followee', ApiController::class)
     ->get('/api/followee/:::/check', 'isFollowee', ApiController::class)
+    ->post('/api/search', 'search', ApiController::class)
     // user zone
     ->get('/logout', 'logout', AuthController::class) // logout user
     ->get('/report/', 'home', HomeController::class) // report a post

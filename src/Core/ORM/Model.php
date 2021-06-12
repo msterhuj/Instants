@@ -22,5 +22,8 @@ abstract class Model extends Database {
         $con->exec($this->toUpdate($this->getTableName()));
     }
 
-    public function delete() {}
+    public function delete() {
+        $con = $this->getConnection();
+        $con->exec($this->toDelete($this->getTableName()));
+    }
 }

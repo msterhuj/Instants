@@ -71,4 +71,8 @@ abstract class Database implements Serializable {
         $set = trim($set, ",");
         return 'update ' . $table . ' set '.  $set . ' where id = ' . $newObj["id"];
     }
+
+    protected function toDelete(string $table): string {
+        return "delete from user where id = " . $this->getData()["id"] . " limit 1";
+    }
 }
