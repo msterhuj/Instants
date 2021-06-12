@@ -78,4 +78,19 @@ function drawGraph(canvasId, dataArr) {
     context.stroke();
 }
 
-drawGraph("testCanvas", [0, 0, 100, 0, 115, 99, 20]);
+function requestGraf(callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", '/api/stats/graf', true);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status === 200)
+                callback(this.responseText)
+            else alert("Error Getting Posts")
+        }
+    }
+    xhr.send();
+}
+requestGraf((result) => {
+    drawGraph("testCanvas", JSON.parse(result));
+})

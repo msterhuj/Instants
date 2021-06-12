@@ -38,6 +38,7 @@ $app->getRouter()
     ->get('/api/followee/:::', 'followee', ApiController::class)
     ->get('/api/followee/:::/check', 'isFollowee', ApiController::class)
     ->post('/api/search', 'search', ApiController::class)
+    ->get('/api/stats/graf', 'stats_graf', ApiController::class)
     // user zone
     ->get('/logout', 'logout', AuthController::class) // logout user
     ->get('/report/', 'home', HomeController::class) // report a post

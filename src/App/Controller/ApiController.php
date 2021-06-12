@@ -102,4 +102,25 @@ class ApiController extends Controller {
 
         echo json_encode($prepare->fetchAll(PDO::FETCH_ASSOC));
     }
+
+    public function stats_graf() {
+        $con = Database::getPDO();
+
+        // day now
+        $dn = $con->query("select id from stats where createdAt > now() - interval 1 day;")->rowCount();
+        // day -1
+        $d1 = $con->query("select id from stats where createdAt > now() - interval 2 day;")->rowCount() - $dn;
+        // day -2
+        $d2 = $con->query("select id from stats where createdAt > now() - interval 3 day;")->rowCount() - $d1;
+        // day -3
+        $d3 = $con->query("select id from stats where createdAt > now() - interval 4 day;")->rowCount() - $d2;
+        // day -4
+        $d4 = $con->query("select id from stats where createdAt > now() - interval 5 day;")->rowCount() - $d3;
+        // day -5
+        $d5 = $con->query("select id from stats where createdAt > now() - interval 6 day;")->rowCount() - $d4;
+        // day -6
+        $d6 = $con->query("select id from stats where createdAt > now() - interval 7 day;")->rowCount() - $d5;
+
+        echo json_encode([$d6, $d5, $d4, $d3, $d2, $d1, $dn]);
+    }
 }
