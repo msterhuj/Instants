@@ -17,7 +17,20 @@ class ApiController extends Controller {
         if ($this->isGet()) {
             $offset = intval(Route::getRouteParam());
             $con = Database::getPDO();
-            $prepare = $con->prepare("select * from post where replyTo is null order by createdAt desc limit 5 offset $offset");
+            $followWhere = " ";
+
+
+            if (!Controller::isGuest() && isset($_COOKIE["POST_FOLLOW_ONLY"])) {
+
+                $prepare = $con->prepare("select followee from follow where follower = :id");
+                $prepare->execute([
+                    "id" => User::getFromSession()->getId()
+                ]);
+                foreach ($prepare->fetchAll(\PDO::FETCH_ASSOC) as $followee)
+                    $followWhere .= " or author = " . $followee["followee"];
+                $followWhere = "and " . trim($followWhere, " or ");
+            }
+            $prepare = $con->prepare("select * from post where replyTo is null " . $followWhere .  " order by createdAt desc limit 5 offset $offset");
             $prepare->execute();
             $content = "";
             $data = $prepare->fetchAll(\PDO::FETCH_ASSOC);
