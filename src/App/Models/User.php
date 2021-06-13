@@ -149,26 +149,26 @@ class User extends Model {
         return self::loadBy("id", $_SESSION["USER"]);
     }
 
-    public function isFollowee() {
+    public function isFollowee($followee): bool {
         $con = Database::getPDO();
         $prepare = $con->prepare("select * from `follow` where follower = :follower and followee = :followee");
         $prepare->execute([
-            "follower" => intval($_SESSION["USER"]),
-            "followee" => intval(Route::getRouteParam())
+            "follower" => $this->getId(),
+            "followee" => intval($followee)
         ]);
         return !empty($prepare->fetchObject());
     }
 
     public function follow() {
         $con = Database::getPDO();
-        $followed = $this->isFollowee();
+        $followed = $this->isFollowee(Route::getRouteParam());
         if ($followed) {
             $prepare = $con->prepare("delete from `follow` where follower = :follower and followee = :followee");
         } else {
             $prepare = $con->prepare("insert into `follow` (follower, followee) value (:follower, :followee)");
         }
         $prepare->execute([
-            "follower" => intval($_SESSION["USER"]),
+            "follower" => $this->getId(),
             "followee" => intval(Route::getRouteParam())
         ]);
         return $followed;

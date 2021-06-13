@@ -5,6 +5,7 @@ session_start();
 
 unset($_SESSION['ERROR']);
 
+use App\Controller\MessagesController;
 use Core\App;
 use App\Controller\HomeController;
 use App\Controller\AuthController;
@@ -42,9 +43,11 @@ $app->getRouter()
     // user zone
     ->get('/logout', 'logout', AuthController::class) // logout user
     ->get('/report/', 'home', HomeController::class) // report a post
-    ->get('/support/', 'home', HomeController::class) // support tech
-    ->get('/messages/', 'home', HomeController::class) // all private message
-    ->get('/messages/:::', 'home', HomeController::class) // private with user
+    ->get('/contact/', 'home', HomeController::class) // contact page
+    ->get('/messages/', 'index', MessagesController::class) // all private message
+    ->get('/messages/:::', 'private_msg', MessagesController::class) // private with user
+    ->get('/messages/:::/fetch', 'private_fetch', MessagesController::class) // private with user
+    ->post('/messages/:::', 'private_msg', MessagesController::class) // add msg in private user
     ->get('/settings/', 'home', HomeController::class) // settings of user
     ->get('/p/:::', 'profile', UserController::class)
 ;
