@@ -33,8 +33,7 @@ class AuthController extends Controller {
 
                 $connection = Database::getPDO();
 
-                /* TODO
-                 * if (strlen($username) < 2 || strlen($username) > 30) {
+                if (strlen($username) < 2 || strlen($username) > 30) {
                     $_SESSION['ERROR'][] = "Username pas bien";
                 } else {
                     $queryPrepared = $connection->prepare("SELECT username FROM user WHERE username=:username;");
@@ -67,7 +66,7 @@ class AuthController extends Controller {
 
                 if ($pass != $vpass) {
                     $_SESSION['ERROR'][] = "VPassword pas bien";
-                }*/
+                }
 
                 if (empty($_SESSION['ERROR'])) {
                     $user = new User();
@@ -127,6 +126,7 @@ class AuthController extends Controller {
 
                 if (!$this->checkCSRF($data["csrf"])) $_SESSION['ERROR'][] = "Invalid csrf";
                 if (!$user->emailValidated()) $_SESSION['ERROR'][] = "Email not verified";
+                if ($user->hasRole("BANNED")) $_SESSION['ERROR'][] = "Your are banned from this server :p";
 
                 if (empty($_SESSION['ERROR'])) {
                     if ($user->checkPwd($data["pass"])) {

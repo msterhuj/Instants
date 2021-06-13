@@ -31,6 +31,14 @@ class AdminController extends Controller {
 
     public function admin_report() {}
 
+    public function admin_user_roler() {
+        $user = User::loadBy("id", Route::getRouteParam());
+        if ($user->hasRole("ADMIN")) $user->delRoles("ADMIN");
+        else $user->addRoles("ADMIN");
+        $user->update();
+        $this->redirectTo("admin_users");
+    }
+
     public function admin_user_ban() {
         if ($this->isGuest()) $this->redirectTo("login");
         if (!User::getFromSession()->hasRole("ADMIN")) $this->redirectTo("home");

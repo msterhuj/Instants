@@ -30,6 +30,7 @@ $app->getRouter()
     ->get('/admin/report', 'admin_report', AdminController::class) // manage report
     ->get('/admin/users', 'admin_users', AdminController::class) // manage user
     ->get('/admin/user/:::/ban', 'admin_user_ban', AdminController::class) // ban or unban user by id
+    ->get('/admin/user/:::/admin', 'admin_user_roler', AdminController::class) // ban or unban user by id
     ->get('/admin/user/:::/delete', 'admin_user_delete', AdminController::class) // delete user by id
     // api
     ->get('/api/post/:::', 'nextPost', ApiController::class)

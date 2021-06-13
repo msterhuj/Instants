@@ -30,7 +30,11 @@
                             ?>
                         </td>
                         <td>
-                            <a class="btn btn-primary">Change Pass</a>
+                            <?php if (!in_array('ADMIN', $user->getRoles())): ?>
+                                <a class="btn btn-primary" href="<?php echo Controller::getUrl("admin_user_roler", $user->getId()) ?>">Promote Admin</a>
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?php echo Controller::getUrl("admin_user_roler", $user->getId()) ?>">Remove Admin</a>
+                            <?php endif ?>
                             <?php if (!in_array('BANNED', $user->getRoles())): ?>
                                 <a class="btn btn-primary" href="<?php echo Controller::getUrl("admin_user_ban", $user->getId()) ?>">Ban</a>
                             <?php else: ?>
