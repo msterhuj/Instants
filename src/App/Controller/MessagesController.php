@@ -46,7 +46,7 @@ class MessagesController extends Controller {
         $user_recv = User::loadBy("id", Route::getRouteParam());
 
         if ($this->isGet()) {
-            $this->setTemplate("messages")
+            $this->setTemplate("intra")
                 ->appendJS(["msg"])
                 ->render("messages/mp", [
                     "AUTHOR" => $user_recv->getUsername(),

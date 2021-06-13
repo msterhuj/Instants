@@ -42,24 +42,7 @@ use App\Models\User;
                 </div>
 
                 <!-- Scroll infinitely -->
-                <div class="posts col-sm-6">
-                    <?php if (!Controller::isGuest()) { ?>
-                        <div class="new-post">
-                            <div class="card">
-                                <div class="input-group mb-3">
-                                    <textarea id="post-data" class="form-control" aria-label="With textarea"></textarea>
-                                    <button class="btn btn-outline-secondary" onclick="newPost()">
-                                        <i class="far fa-paper-plane"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <div id="post" class="posts-list">{{ SYSTEM_CONTENT }}</div>
-                    <button class="btn btn-primary" onclick="getNextPost()">
-                        <i class="fas fa-search"></i>Actualiser
-                    </button>
-                </div>
+                {{ SYSTEM_CONTENT }}
 
                 <!-- Profile -->
                 <div class="profile col-sm-3">
@@ -81,8 +64,8 @@ use App\Models\User;
                                         <img src="<?php echo $user->getPicture() ?>" alt="mdo" width="32" height="32" class="rounded-circle">
                                     </a>
                                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
-                                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo Controller::getUrl("profile", User::getFromSession()->getUsername()) ?>">Profile</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo Controller::getUrl("settings") ?>">Settings</a></li>
                                         <?php if ($user->hasRole("ADMIN")) { ?>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="<?php echo Controller::getUrl("admin") ?>">Admin</a></li>

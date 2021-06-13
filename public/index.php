@@ -49,7 +49,8 @@ $app->getRouter()
     ->get('/messages/:::', 'private_msg', MessagesController::class) // private with user
     ->get('/messages/:::/fetch', 'private_fetch', MessagesController::class) // private with user
     ->post('/messages/:::', 'private_msg', MessagesController::class) // add msg in private user
-    ->get('/settings/', 'home', HomeController::class) // settings of user
+    ->get('/settings/', 'settings', UserController::class) // settings of user
+    ->post('/settings/', 'settings', UserController::class) // settings of user
     ->get('/p/:::', 'profile', UserController::class)
 ;
 $app->exec();

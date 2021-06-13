@@ -221,6 +221,7 @@ class User extends Model {
      * @return string
      */
     public function getDescription(): string {
+        if (is_null($this->description)) return "";
         return $this->description;
     }
 

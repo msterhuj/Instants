@@ -19,7 +19,7 @@
                 </div>
             <?php } ?>
 
-            <form method="post" action="/signup">
+            <form method="post" action="/settings/">
                 <label for="username" class="control-label">Username</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -42,12 +42,6 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fas fa-lock"></i></span>
                     <input class="form-control" id="vpass" name="vpass" type="password">
-                </div>
-
-                <label for="born" class="control-label">Enter born Date</label>
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
-                    <input class="form-control" id="born" name="born" type="date">
                 </div>
 
                 <input name="csrf" value="{{ CSRF }}" hidden>
