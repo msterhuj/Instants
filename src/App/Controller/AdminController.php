@@ -29,7 +29,9 @@ class AdminController extends Controller {
         ]);
     }
 
-    public function admin_report() {}
+    public function admin_report() {
+
+    }
 
     public function admin_user_roler() {
         $user = User::loadBy("id", Route::getRouteParam());

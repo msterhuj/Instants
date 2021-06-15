@@ -64,7 +64,7 @@ class Post extends Model {
      * @return Post
      * @throws PostNotFoundException
      */
-    public static function loadBy(string $key, string $value): Post {
+    public static function loadBy(string $key, string $value): self {
         $con = Database::getPDO();
         $prepare = $con->prepare("select * from post where $key = :values;");
         $prepare->execute(["values" => $value]);

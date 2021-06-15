@@ -43,7 +43,7 @@ $app->getRouter()
     ->get('/api/stats/graf', 'stats_graf', ApiController::class)
     // user zone
     ->get('/logout', 'logout', AuthController::class) // logout user
-    ->get('/report/', 'home', HomeController::class) // report a post
+    ->get('/report/:::', 'report', HomeController::class) // report a post by id
     ->get('/contact/', 'home', HomeController::class) // contact page
     ->get('/messages/', 'index', MessagesController::class) // all private message
     ->get('/messages/:::', 'private_msg', MessagesController::class) // private with user
